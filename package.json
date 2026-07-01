@@ -1,0 +1,25 @@
+{
+  "name": "canteencwc",
+  "version": "1.0.0",
+  "description": "for Canteen CWC backend",
+  "keywords": [
+    "nodejs"
+  ],
+  "license": "ISC",
+  "author": "Turab",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
