@@ -12,9 +12,11 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "seed:designation":"node src/seedData/seedDesignation.js"
   },
   "dependencies": {
+    "csvtojson": "^2.0.14",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.7.3"
