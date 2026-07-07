@@ -9,14 +9,21 @@ const officeSchema = new mongoose.Schema({
     },
     parentOfficeId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Office"
+        ref:"Office",
     },
     officeTypeId:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"OfficeType"
+        ref:"OfficeType",
+        required:true
     },
     city:{
         type:String,
+    },
+    regionType:{
+        type:String,
+        enum:["Headquarter","Regional"],
+        required:true,
+        trim:true
     },
     isActive:{
         type:Boolean,

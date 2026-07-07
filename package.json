@@ -13,7 +13,10 @@
     "test": "jest",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
-    "seed:designation":"node src/seedData/seedDesignation.js"
+    "seed:designation":"node src/seedData/seedDesignation.js",
+    "seed:officeType":"node src/seedData/seedOfficeType.js",
+    "seed:role": "node src/seedData/seedRole.js",
+    "seed:office":"node src/seedData/seedOffice.js"
   },
   "dependencies": {
     "csvtojson": "^2.0.14",

@@ -1,0 +1,410 @@
+Office	SuperiorOffice	OfficeType	City	RegionType	Status
+UT & SS	Central Water Commission(HQ)				Inactive
+Narmada Hydromechanical Design Directorate			New Delhi	Headquarter	Inactive
+Dte- CADWM	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Div-R&D	Org-DSO	Division	New Delhi	Headquarter	Active
+SD-PSD KADAPA	Div-HYD Chennai	Sub Div	YSR KADAPA	Regional	Active
+CWMA	HRM	Directorate	New Delhi	Headquarter	Active
+Dte-SWRM III	Org-SWRMO	Directorate	New Delhi	Headquarter	Active
+Dte-SWRM II	Org-SWRMO	Directorate	New Delhi	Headquarter	Active
+Dte-SWRM I	Org-SWRMO	Directorate	New Delhi	Headquarter	Active
+Div-BID Bhutan	Cir-IC Gangtok	Division	Gangtok	Regional	Active
+Div-DVRRC	Cir-HOC Maithon	Division	Dhanbad	Regional	Active
+SD-MSD	Div-LKD Hyderabad	Sub Div	Hyderabad	Regional	Active
+SD-ISD Leh	Div- CD Jammu	Sub Div	Leh Ladakh	Regional	Active
+SD-NSD 3 Jammu	Div- CD Jammu	Sub Div	Jammu	Regional	Active
+Dte-M&A Srinagar	Org-IBO Chandigarh	Directorate	Srinagar	Regional	Active
+Dte-FM	Org-FMO	Directorate	New Delhi	Headquarter	Active
+SD-MNSD Barpeta	Div-MBD Guwahati	Sub Div	Barpeta	Regional	Active
+SD-MBSD Guwahati	Div-MBD Guwahati	Sub Div	Kamrup Metro	Regional	Active
+SD-KPSD Guwahati	Div-MBD Guwahati	Sub Div	Kamrup Metro	Regional	Active
+Org-Design(SE&W)	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+Estt-Pension Monitoring Cell	Dte-Estt 1	Estt	New Delhi	Headquarter	Active
+Dte-M&A Vadodara	Org-MTBO Gandhinagar	Directorate	Vadodara	Regional	Active
+Dte-BED Kochi	Org-CSRO Coimbatore	Directorate	Ernakulam	Regional	Active
+SD-UUIPU	Div-NEID I Silchar	Sub Div	Cachar	Regional	Active
+SD-SIPU Silchar	Div-NEID I Silchar	Sub Div	Cachar	Regional	Active
+SD-RIPU Silchar	Div-NEID I Silchar	Sub Div	Cachar	Regional	Active
+SD-SDE(HQ) Itanagar	Div-NEID III Itanagar	Sub Div	Papum Pare	Regional	Active
+SD-DKSD Nagaon	Div-UBD Dibrugarh	Sub Div	Nagaon	Regional	Active
+Cir-HOC Noida	Org-YBO New Delhi	Circle	Gautam Buddha Nagar	Regional	Active
+Dte-NBC New Delhi	Org-YBO New Delhi	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Jaipur	Org-YBO New Delhi	Directorate	Jaipur	Regional	Active
+SD-PISD Faridabad	Div-P&I Faridabad	Sub Div	Faridabad	Regional	Active
+Dte-M&A Kolkata	Org-TBDBO Kolkata	Directorate	Kolkata	Regional	Active
+Dte-MON Gandhinagar	Org-MTBO Gandhinagar	Directorate	Gandhinagar	Regional	Active
+SD-CRSD Kolkata	Div-DD Asansol	Sub Div	Kolkata	Regional	Active
+Dte-App Gandhinagar	Org-MTBO Gandhinagar	Directorate	Gandhinagar	Regional	Active
+SD-BJSD Krishna Nagar	Div-LGD 3 Berhampore	Sub Div	Nadia	Regional	Active
+Dte-M&A Raipur	Org-NBO Bhopal	Directorate	Raipur	Regional	Active
+Dte-M&A Bhopal	Org-NBO Bhopal	Directorate	Bhopal	Regional	Active
+Dte-MON Bengaluru	Org-MSO Bengaluru	Directorate	Bengaluru Urban	Regional	Active
+Dte-APP Bengaluru	Org-MSO Bengaluru	Directorate	Bengaluru Urban	Regional	Active
+Dte-M&A Pune	Org-MCO Nagpur	Directorate	Pune	Regional	Active
+Dte-MON Nagpur	Org-MCO Nagpur	Directorate	Nagpur	Regional	Active
+Div- CD Jammu	Dte-M&A Jammu	Division	Jammu	Regional	Active
+Dte-M&A Faridabad	Org-IBO Chandigarh	Directorate	Faridabad	Regional	Active
+SD-MSSD Dehri	Div-LGD 2 Patna	Sub Div	Rohtas	Regional	Active
+SD-MGUKSD Munger	Div-LGD 2 Patna	Sub Div	Munger	Regional	Active
+SD-MSD Hyderabad	Div-LGD Hyderabad	Sub Div	Hyderabad	Regional	Active
+SD-MGSD Warangal	Div-UGD Hyderabad	Sub Div	Warangal	Regional	Active
+Establishment-V	Dte-Estt 2	Estt	New Delhi	Headquarter	Active
+Establishment-IV	Dte-Estt 1	Estt	New Delhi	Headquarter	Active
+Establishment-XIV	Dte-Estt 1	Estt	New Delhi	Headquarter	Active
+Establishment-XIII	Dte-Estt 3	Estt	New Delhi	Headquarter	Active
+Establishment-XII	Dte-Estt 1	Estt	New Delhi	Headquarter	Active
+Establishment-XI	Dte-Estt 2	Estt	New Delhi	Headquarter	Active
+Central Water Commission(HQ)		Org	New Delhi	Headquarter	Active
+HRM	CHAIRMAN Office	Org	New Delhi	Headquarter	Active
+Dte-Estt 2	HRM	Directorate	New Delhi	Headquarter	Active
+Dte-Estt 1	HRM	Directorate	New Delhi	Headquarter	Active
+SD-MSD Kadana	Div-MD Gandhinagar	Sub Div	Mahisagar	Regional	Active
+SD-USSD Haldwani Nanital	Div-MGD 1 Lucknow	Sub Div	Nainital	Regional	Active
+Org-SWRMO	CHAIRMAN Office	Org	New Delhi	Headquarter	Active
+Dte-M&KBLPD Bhopal	Org-NBO Bhopal	Directorate	Bhopal	Regional	Active
+SD-LKSD 1 Nagarjun Sagar	Div-LKD Hyderabad	Sub Div	Nalgonda	Regional	Active
+SD-MKSD 2 Kurnool	Div-LKD Hyderabad	Sub Div	Kurnool	Regional	Active
+SD-UPPLKSD Gaya	Div-LGD 2 Patna	Sub Div	Gaya	Regional	Active
+SD-LGLGSD Chapra	Div-LGD 2 Patna	Sub Div	Saran	Regional	Active
+Dte-Estt 3	HRM	Directorate	New Delhi	Headquarter	Active
+SD-MGYSD Allahabad	Div-MGD 3 Varanasi	Sub Div	Prayagraj	Regional	Active
+SD-IISD ITANAGAR	Div-NEID III Itanagar	Sub Div	Papum Pare	Regional	Active
+R&I/CRU Section	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+ACCOUNTS(WORKS)	ACCOUNTS OFFICER	Section	New Delhi	Headquarter	Active
+Dte-HYD(URBAN)	Org-HSO	Directorate	New Delhi	Headquarter	Active
+Establishment-X	Dte-Admin	Estt	New Delhi	Headquarter	Active
+Establishment-IX	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+Establishment-VIII	Dte-Estt 2	Estt	New Delhi	Headquarter	Active
+Establishment-VII	Dte-Estt 3	Estt	New Delhi	Headquarter	Active
+Establishment-VI	Dte-Admin	Estt	New Delhi	Headquarter	Active
+Establishment-I	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+Dte-PPP & PD Cell	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-HMD(SE&W)	Dte-Gates Design(N&W)	Directorate	New Delhi	Headquarter	Active
+MEMBER(D&R)	CHAIRMAN Office	Wing	New Delhi	Headquarter	Active
+Dte-MON(E&W)	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Ranchi	Org-LGBO Patna	Directorate	Ranchi	Regional	Active
+Org-Design(E&NE)	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+Dte-M&P Bhopal	Org-NBO Bhopal	Directorate	Bhopal	Regional	Active
+Dte-L&IB	HRM	Directorate	New Delhi	Headquarter	Active
+Org-Design(NW&S)	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+Org-Design(N&W)	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+Dte-HCD(N&W)	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Cir-HO&CC Bengaluru	Org-MSO Bengaluru	Circle	Bengaluru Urban	Regional	Active
+SD-LB&CR	Div-LGD 3 Berhampore	Sub Div	Murshidabad	Regional	Active
+Org-P&D	MEMBER(RM)	Org	New Delhi	Headquarter	Active
+Dte-D&R(C)	MEMBER(D&R)	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Jammu	Org-IBO Chandigarh	Directorate	Jammu	Regional	Active
+Dte-HCD(NW&S)	Org-Design(NW&S)	Directorate	New Delhi	Headquarter	Active
+Dte-BCD(N&W)	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Dte-CMDD(N&W)	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Dte-Gates Design(NW&S)	Org-Design(NW&S)	Directorate	New Delhi	Headquarter	Active
+Dte-P&P	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-CMDD(E&NE)	Org-Design(E&NE)	Directorate	New Delhi	Headquarter	Active
+Dte-MORPH & CC	Org-P&D	Directorate	New Delhi	Headquarter	Active
+Dte-Gates Design(N&W)	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Dte-BCD(E&NE)	Org-Design(E&NE)	Directorate	New Delhi	Headquarter	Active
+Div-P&I Faridabad	Cir-PC Faridabad	Division	Faridabad	Regional	Active
+Dte-FE&SA	Org-DSO	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Shimla	Org-IBO Chandigarh	Directorate	Shimla	Regional	Active
+Dte-HCD(E&NE)	Org-Design(E&NE)	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Guwahati	Org-BBO GUWAHATI	Directorate	Kamrup Metro	Regional	Active
+O&M Section	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+Dte-Embk(N&W)	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Dte-BCD(NW&S)	Org-Design(NW&S)	Directorate	New Delhi	Headquarter	Active
+Dte-GATES(E&NE)	Org-Design(E&NE)	Directorate	New Delhi	Headquarter	Active
+Dte-EMBK(E&NE)	Org-Design(E&NE)	Directorate	New Delhi	Headquarter	Active
+Dte-NWP & PR	Org-BPMO	Directorate	New Delhi	Headquarter	Active
+Dte-WS&RS & INCSW	Org-EMO	Directorate	New Delhi	Headquarter	Active
+Dte-M&A Agra	Org-UGBO Lucknow	Directorate	Agra	Regional	Active
+DDO - I	ACCOUNTS OFFICER	Division	New Delhi	Headquarter	Active
+Org-CMO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+SD-SSD Visakhapatnam	Div-LGD Hyderabad	Sub Div	Visakhapatanam	Regional	Active
+Org-MSO Bengaluru	MEMBER(RM)	Org	Bengaluru Urban	Regional	Active
+SD-NWRSD Himmatnagar	Div-MD Gandhinagar	Sub Div	Sabar Kantha	Regional	Active
+DDO-II	ACCOUNTS OFFICER	Division	New Delhi	Headquarter	Active
+SD-BSD Silchar	Div-MBD Guwahati	Sub Div	Cachar	Regional	Active
+SD-AMSD Suri	Div-DD Asansol	Sub Div	Birbhum	Regional	Active
+SD-MSD 2 Dharamnagar	Div-MD Silchar	Sub Div	North Tripura	Regional	Active
+SD-MTSD Dhule	Div-TD Surat	Sub Div	Dhule	Regional	Active
+Dte-DSD 1	Org-DSO	Directorate	New Delhi	Headquarter	Active
+SD-MCSD Kota	Div-CD Jaipur	Sub Div	Kota	Regional	Active
+SD-UCSD Kullu	Div-SHD Shimla	Sub Div	Kullu	Regional	Active
+SD-DGSD Silvassa	Div-TD Surat	Sub Div	Dadra And Nagar Haveli	Regional	Active
+SD-MSD Nizamabad	Div-UGD Hyderabad	Sub Div	Nizamabad	Regional	Active
+SD-URSD Gonda	Div-MGD 1 Lucknow	Sub Div	Gonda	Regional	Active
+Cor-SE(C) Bhopal	Org-NBO Bhopal	Circle	Bhopal	Regional	Active
+SD-LNSD Bharuch	Div-TD Surat	Sub Div	Bharuch	Regional	Active
+SD-BKBSD Darbhanga	Div-LGD 1 Patna	Sub Div	Darbhanga	Regional	Active
+Org-PAO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+ACCOUNTS-I	ACCOUNTS OFFICER	Section	New Delhi	Headquarter	Active
+SD-BSD Tehri	Div-HGD Haridwar	Sub Div	Tehri Garhwal	Regional	Active
+SD-KDSSD Midnapur	Div-DD Asansol	Sub Div	Medinipur West	Regional	Active
+SD-CDSD Karaikal	Div-HYD Chennai	Sub Div	Karaikal	Regional	Active
+SD-MGLRSD Bareilly	Div-MGD 2 Lucknow	Sub Div	Bareilly	Regional	Active
+FINANCE Unit	HRM	Directorate	New Delhi	Headquarter	Active
+SD-CSSD New Delhi	Div-P&I Faridabad	Sub Div	New Delhi	Headquarter	Active
+SD-MNSD 3 Indore	Div-ND Bhopal	Sub Div	Indore	Regional	Active
+SD-MNSD 1 Hoshangabad	Div-ND Bhopal	Sub Div	Hoshangabad	Regional	Active
+SD-LMSD Purnea	Div-LGD 1 Patna	Sub Div	Purnia	Regional	Active
+Dte-EWU	Org-POMIO	Directorate	New Delhi	Headquarter	Active
+SD-BSD Sundergarh	Div-ERD Bhubaneswar	Sub Div	Sundargarh	Regional	Active
+Dte-BP II	Org-BPMO	Directorate	New Delhi	Headquarter	Active
+SD-SWRD 2 Kochi	Div-SWRD Kochi	Sub Div	Ernakulam	Regional	Active
+SD-BSD Bhubaneswar	Div-ERD Bhubaneswar	Sub Div	Khordha	Regional	Active
+Org-POMIO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Dte-PA(C)	Org-PAO	Directorate	New Delhi	Headquarter	Active
+SD-CSD Kozhikode	Div-SWRD Kochi	Sub Div	Kozhikode	Regional	Active
+MEMBER(WPP)	CHAIRMAN Office	Wing	New Delhi	Headquarter	Active
+Dte-ISM 2	Org-IMO	Directorate	New Delhi	Headquarter	Active
+SD-UYCR Dehradun	Div-UYD New Delhi	Sub Div	Dehradun	Regional	Active
+SD-NEISD 3 Aizwal	Div-NEID II Aizawl	Sub Div	Aizawl	Regional	Active
+SD-MESD New Delhi	Div-P&I Faridabad	Sub Div	New Delhi	Headquarter	Active
+Cor-SE(C) Nagpur	Org-MCO Nagpur	Circle	Nagpur	Regional	Active
+SD- JSD 2 Srinagar	Div- CD Jammu	Sub Div	Srinagar	Regional	Active
+SD-LWSD Chandrapur	Div-WD Nagpur	Sub Div	Chandrapur	Regional	Active
+SD-UTSD Davanagere	Div-CD Bengaluru	Sub Div	Davangere	Regional	Active
+SD-TRSSD COOCH Behar	Div-LBD Jalpaiguri	Sub Div	Coochbehar	Regional	Active
+Org-HSO	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+Dte-FCA 1	Org-FMO	Directorate	New Delhi	Headquarter	Active
+Dte-IP(N)	Org-IMO	Directorate	New Delhi	Headquarter	Active
+SD-LCSD Jammu	Div- CD Jammu	Sub Div	Jammu	Regional	Active
+SD-ASD Pauri Garhwal	Div-HGD Haridwar	Sub Div	Pauri Garhwal	Regional	Active
+SD-UCSD Indore	Div-CD Jaipur	Sub Div	Indore	Regional	Active
+SD-BSD Udaipur	Div-CD Jaipur	Sub Div	Udaipur	Regional	Active
+Dte-BP III	Org-BPMO	Directorate	New Delhi	Headquarter	Active
+SD-PHOSD Tanakpur	Div-P&I Faridabad	Sub Div	Champawat	Regional	Active
+SD-BLSD Palanpur	Div-MD Gandhinagar	Sub Div	Banas Kantha	Regional	Active
+Dte-WRS	Org-BPMO	Directorate	New Delhi	Headquarter	Active
+RTI Section	SECRETARY(CWC)	Division	New Delhi	Headquarter	Active
+CHAIRMAN Office	CHAIRMAN Office	Chairman	New Delhi	Headquarter	Active
+Org-EMO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Establishment-III	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+SD-MDLBSD Durgapur	Div-DD Asansol	Sub Div	Paschim Bardhaman	Regional	Active
+MEMBER(RM)	CHAIRMAN Office	Wing	New Delhi	Headquarter	Active
+SD-LTSD Surat	Div-TD Surat	Sub Div	Surat	Regional	Active
+SD-SSD Naharlagun	Div-UBD Dibrugarh	Sub Div	Dibrugarh	Regional	Active
+SD-MSD 3 Silchar	Div-MD Silchar	Sub Div	Cachar	Regional	Active
+SD-ISD MAITHON	Div-NEID III Itanagar	Sub Div	Dhanbad	Regional	Active
+Div-ND Bhopal	Cor-SE(C) Bhopal	Division	Bhopal	Regional	Active
+SD- LTSD Kurnool	Div-LKD Hyderabad	Sub Div	Kurnool	Regional	Active
+Cir-MC Silchar	Org-BOBO Shillong	Circle	Cachar	Regional	Active
+SD-UTUMSD Siliguri	Div-LBD Jalpaiguri	Sub Div	Darjeeling	Regional	Active
+SD-SSD Balasore	Div-ERD Bhubaneswar	Sub Div	Baleshwar	Regional	Active
+SD-LYSD New Delhi	Div-UYD New Delhi	Sub Div	New Delhi	Headquarter	Active
+Org-ISO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Dte-MON(E)	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-HYD(S)	Org-HSO	Directorate	New Delhi	Headquarter	Active
+Dte-CA(HWF)	Org-PAO	Directorate	New Delhi	Headquarter	Active
+ACCOUNTS-II	ACCOUNTS OFFICER	Section	New Delhi	Headquarter	Active
+SD-SBSD Jhansi	Div-LYD Agra	Sub Div	Jhansi	Regional	Active
+SD- VSD Berhampur	Div-ERD Bhubaneswar	Sub Div	Ganjam	Regional	Active
+Dte-Economics	Org-PPO	Directorate	New Delhi	Headquarter	Active
+Cir-HOC Bengaluru	Org-MSO Bengaluru	Circle	Bengaluru Urban	Regional	Active
+Establishment-II	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+SD-UBSD 2 Jorhat	Div-UBD Dibrugarh	Sub Div	Jorhat	Regional	Active
+SD-LMSD Bhubaneswar	Div-MD Burla	Sub Div	Khordha	Regional	Active
+SD-UDSD Tenughat	Div-DD Asansol	Sub Div	Bokaro	Regional	Active
+SD-LBSD Solapur	Div-UKD Pune	Sub Div	Solapur	Regional	Active
+Dte-RDC 2	Org-P&D	Directorate	New Delhi	Headquarter	Active
+BRWQL-Guwahati	Div-MBD Guwahati	Sub Div	Kamrup	Regional	Active
+Org-CSRO Coimbatore	MEMBER(RM)	Org	Coimbatore	Regional	Active
+Dte-MON(N)	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-M&A (A) Hyderabad	Org-KGBO Hyderabad	Directorate	Hyderabad	Regional	Active
+SD-LCSD Trichy	Div-SRD Coimbatore	Sub Div	Tiruchirappalli	Regional	Active
+Dte-TD	Org-CMO	Directorate	New Delhi	Headquarter	Active
+Div-SRD Coimbatore	Cir-CSRC Coimbatore	Division	Coimbatore	Regional	Active
+SD-JLTSD Jalpaiguri	Div-LBD Jalpaiguri	Sub Div	Jalpaiguri	Regional	Active
+Dte-MON(C)	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Dte-APP Nagpur	Org-MCO Nagpur	Directorate	Nagpur	Regional	Active
+Dte-WM	Org-IMO	Directorate	New Delhi	Headquarter	Active
+SD-LRGSD Gorakhpur	Div-MGD 1 Lucknow	Sub Div	Gorakhpur	Regional	Active
+Dte-DR(C)	MEMBER(D&R)	Directorate	New Delhi	Headquarter	Active
+Dte-CBPM	Org-POMIO	Directorate	New Delhi	Headquarter	Active
+ACCOUNTS OFFICER	SECRETARY(CWC)	Estt	New Delhi	Headquarter	Active
+Dte-FMP	Org-FMO	Directorate	New Delhi	Headquarter	Active
+SD-MISD Serchhip	Div-NEID II Aizawl	Sub Div	Serchhip	Regional	Active
+Cir-HOC Dehradun	Org-UGBO Lucknow	Circle	Dehradun	Regional	Active
+SD-MMSD 1 Raipur	Div-MD Burla	Sub Div	Raipur	Regional	Active
+Dte-FCA 2	Org-FMO	Directorate	New Delhi	Headquarter	Active
+APAR 2 Section	Dte-Estt 3	Division	New Delhi	Headquarter	Active
+SD-PGSD Yavatmal	Div-WD Nagpur	Sub Div	Yavatmal	Regional	Active
+Dte-RC	Org-P&D	Directorate	New Delhi	Headquarter	Active
+Cir-IC Gangtok	Org-TBDBO Kolkata	Circle	Gangtok	Regional	Active
+SD-UMSD Raipur	Div-MD Burla	Sub Div	Raipur	Regional	Active
+Dte-WPPC	MEMBER(WPP)	Directorate	New Delhi	Headquarter	Active
+SD-YSD New Delhi	Div-UYD New Delhi	Sub Div	New Delhi	Headquarter	Active
+Dte-Training	HRM	Directorate	New Delhi	Headquarter	Active
+SD-LYSD 2 Agra	Div-LYD Agra	Sub Div	Agra	Regional	Active
+SD-UKSD 2 Miraj	Div-UKD Pune	Sub Div	Sangli	Regional	Active
+Dte-M&A Bhubaneswar	Org-MERO Bhubaneswar	Directorate	Khordha	Regional	Active
+Dte-HYD(C)	Org-HSO	Directorate	New Delhi	Headquarter	Active
+SD-PPSD Chennai	Div-HYD Chennai	Sub Div	Chennai	Regional	Active
+SD-LKSD 2 Vijayawada	Div-LKD Hyderabad	Sub Div	Krishna	Regional	Active
+Org-BBO GUWAHATI	MEMBER(RM)	Org	Kamrup	Regional	Active
+SD-SWRSD 3 Mangalore	Div-SWRD Kochi	Sub Div	Dakshina Kannada	Regional	Active
+Div-SWRD Kochi	Cir-CSRC Coimbatore	Division	Ernakulam	Regional	Active
+Org-IMO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+SD-WSD Chandrapur	Div-WD Nagpur	Sub Div	Chandrapur	Regional	Active
+SD-UCSD Bengaluru	Div-CD Bengaluru	Sub Div	Bengaluru Urban	Regional	Active
+SD-UBSD I Dibrugarh	Div-UBD Dibrugarh	Sub Div	Dibrugarh	Regional	Active
+SD-MMSD 2 Burla	Div-MD Burla	Sub Div	Sambalpur	Regional	Active
+Org-PMO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Dte-DSR	Org-DSO	Directorate	New Delhi	Headquarter	Active
+Org-KGBO Hyderabad	MEMBER(RM)	Org	Hyderabad	Regional	Active
+SD-UGSD Haridwar	Div-HGD Haridwar	Sub Div	Haridwar	Regional	Active
+Org-BOBO Shillong	MEMBER(RM)	Org	East Khasi Hills	Regional	Active
+SD-ISD 2 East Sikkim	Div-SID Gangtok	Sub Div	Gangtok	Regional	Active
+Dte-CA(Irrigation 1)	Org-PAO	Directorate	New Delhi	Headquarter	Active
+APAR 1 Section	SECRETARY(CWC)	Division	New Delhi	Headquarter	Active
+Cir-CSRC Coimbatore	Org-CSRO Coimbatore	Circle	Bengaluru Urban	Regional	Active
+Dte-MON(S)	Org-PMO	Directorate	New Delhi	Headquarter	Active
+Org-PPO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Div-MD Silchar	Cir-MC Silchar	Division	Cachar	Headquarter	Active
+SD-LYSD 3 Hamirpur	Div-LYD Agra	Sub Div	Hamirpur	Regional	Active
+SD-KSD Begusarai	Div-LGD 1 Patna	Sub Div	Begusarai	Regional	Active
+Cir-GC Hyderabad	Org-KGBO Hyderabad	Circle	Hyderabad	Regional	Active
+Dte-Remote Sensing	Org-EMO	Directorate	New Delhi	Headquarter	Active
+Org-DSO	MEMBER(D&R)	Org	New Delhi	Headquarter	Active
+SD-PSD Nanded	Div-UGD Hyderabad	Sub Div	Nanded	Regional	Active
+Hindi Section	SECRETARY(CWC)	Division	New Delhi	Headquarter	Active
+Div-HYD Chennai	Cir-CSRC Coimbatore	Division	Chennai	Regional	Active
+Dte-A&C NWA Pune	NWA-PUNE	Directorate	Pune	Regional	Active
+Dte-HD	Org-ISO	Directorate	New Delhi	Headquarter	Active
+Div-MD Burla	Cir-HOC Bhubaneswar	Division	Sambalpur	Regional	Active
+Cir-HOC Maithon	Org-TBDBO Kolkata	Circle	Dhanbad	Regional	Active
+Dte-MON Chennai	Org-CSRO Coimbatore	Directorate	Chennai	Regional	Active
+Cir-HOC Gandhinagar	Org-MTBO Gandhinagar	Circle	Gandhinagar	Regional	Active
+SD-SSD New Delhi	Div-UYD New Delhi	Sub Div	New Delhi	Headquarter	Active
+Dte-EA	Org-PAO	Directorate	New Delhi	Headquarter	Active
+Dte-CM Dte	Org-P&D	Directorate	New Delhi	Headquarter	Active
+SD-SSD Ahmedabad	Div-MD Gandhinagar	Sub Div	Ahmadabad	Regional	Active
+Dte-Instrumentation	Org-DSO	Directorate	New Delhi	Headquarter	Active
+Div-MGD 1 Lucknow	Dte-M&A Lucknow	Division	Lucknow	Regional	Active
+SD-LGSD 2 Rajahmundry	Div-LGD Hyderabad	Sub Div	East Godavari	Regional	Active
+Dte-FM 2	Org-FMO	Directorate	New Delhi	Headquarter	Active
+TC Dte (PC)	HRM	Directorate	New Delhi	Headquarter	Active
+SD-MCSD Coimbatore	Div-SRD Coimbatore	Sub Div	Coimbatore	Regional	Active
+Cir-HO&IC Guwahati	Org-BBO GUWAHATI	Circle	Kamrup	Regional	Active
+Dte-ISM 1	Org-IMO	Directorate	New Delhi	Headquarter	Active
+SD-PSD Cuddapah	Div-HYD Chennai	Sub Div	Y.S.R.	Regional	Active
+Org-FMO	MEMBER(RM)	Org	New Delhi	Headquarter	Active
+Dte-DSD	Org-Design(N&W)	Directorate	New Delhi	Headquarter	Active
+Dte-HYD(N)	Org-HSO	Directorate	New Delhi	Headquarter	Active
+ACCOUNTS-III	ACCOUNTS OFFICER	Section	New Delhi	Headquarter	Active
+SD-SWRSD 4 Goa	Div-CD Bengaluru	Sub Div	North Goa	Regional	Active
+SD-UNSD Jabalpur	Div-ND Bhopal	Sub Div	Jabalpur	Regional	Active
+SD-USRSD Rewa	Div-MGD 3 Varanasi	Sub Div	Rewa	Regional	Active
+WQL-Raipur	Div-MD Burla	Sub Div	Raipur	Regional	Active
+SD-MGCSSD Varanasi	Div-MGD 3 Varanasi	Sub Div	Varanasi	Regional	Active
+SD-MGSD  Bagh Kanpur	Div-MGD 2 Lucknow	Sub Div	Kanpur Nagar	Regional	Active
+Dte-DSD 2	Org-DSO	Directorate	New Delhi	Headquarter	Active
+eGOV CELL	SECRETARY(CWC)	Division	New Delhi	Headquarter	Active
+Div-MGD 3 Varanasi	Cir-HOC Varanasi	Division	Varanasi	Regional	Active
+SD-SWRD 1 Thiruvananthapuram	Div-SWRD Kochi	Sub Div	Thiruvananthapuram	Regional	Active
+BUDGET Section	SECRETARY(CWC)	Circle	New Delhi	Headquarter	Active
+SD-LCSD Jaipur	Div-CD Jaipur	Sub Div	Jaipur	Regional	Active
+Org-UGBO Lucknow	MEMBER(RM)	Org	Lucknow	Regional	Active
+Org-YBO New Delhi	MEMBER(RM)	Org	New Delhi	Headquarter	Active
+Div-MID Shillong	Cir-MC Silchar	Division	East Khasi Hills	Regional	Active
+SD-MKSD 1 Bagalkot	Div-CD Bengaluru	Sub Div	Bagalkote	Regional	Active
+Div-LYD Agra	Cir-HOC Noida	Division	Agra	Regional	Active
+SD-SHSD Shimla	Div-SHD Shimla	Sub Div	Shimla	Regional	Active
+JPO-SKSKI (NEPAL)	Cir-PC Faridabad	Division	Faridabad	Regional	Active
+Dte-M&A Chandigarh	Org-IBO Chandigarh	Directorate	Chandigarh	Regional	Active
+Dte-PA(S)	Org-PAO	Directorate	New Delhi	Headquarter	Active
+Dte-BP I	Org-BPMO	Circle	New Delhi	Headquarter	Active
+Org-BPMO	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+SD-MISD 1 Shillong	Div-MID Shillong	Sub Div	East Khasi Hills	Regional	Active
+UYRB	MEMBER(WPP)	Org	New Delhi	Headquarter	Active
+Dte-Admin	HRM	Directorate	New Delhi	Headquarter	Active
+SD-VSD Madurai	Div-ERD Bhubaneswar	Sub Div	Madurai	Regional	Active
+Dte-HYD(DSR)	Org-HSO	Circle	New Delhi	Headquarter	Active
+Dte-PCP	HRM	Directorate	New Delhi	Headquarter	Active
+Dte-MON Patna	Org-LGBO Patna	Directorate	Patna	Regional	Active
+Cir-HOC Bhubaneswar	Org-MERO Bhubaneswar	Circle	Khordha	Regional	Active
+Div-MGD 2 Lucknow	Cir-HOC Dehradun	Division	Lucknow	Regional	Active
+SD-MSD 1 Agartala	Div-MD Silchar	Sub Div	West Tripura	Regional	Active
+Dte-M&A Lucknow	Org-UGBO Lucknow	Directorate	Lucknow	Regional	Active
+Org-MCO Nagpur	MEMBER(RM)	Org	Nagpur	Regional	Active
+SD-LGSD Farakka	Div-LGD 3 Berhampore	Sub Div	Murshidabad	Regional	Active
+SD-MISD 2 Silchar	Div-MID Shillong	Sub Div	Cachar	Regional	Active
+SD-LGSD 1 Bhadrachalam	Div-LGD Hyderabad	Sub Div	Bhadradri Kothagudem	Regional	Active
+Dte-CMDD(NW&S)	Org-Design(NW&S)	Directorate	New Delhi	Headquarter	Active
+SD-SDSD Passighat	Div-UBD Dibrugarh	Sub Div	East Siang	Regional	Active
+Div-LGD 2 Patna	Dte-MON Patna	Division	Patna	Regional	Active
+Dte-PA(N)	Org-PAO	Circle	New Delhi	Headquarter	Active
+Div-DD Asansol	Cir-HOC Maithon	Division	Paschim Bardhaman	Regional	Active
+Dte-RMCD	MEMBER(RM)	Directorate	New Delhi	Headquarter	Active
+OM Section	SECRETARY(CWC)	Circle	New Delhi	Headquarter	Active
+Dte-SMD	HRM	Directorate	New Delhi	Headquarter	Active
+Dte-RO	Org-BPMO	Directorate	New Delhi	Headquarter	Active
+Dte-EMBK(NW&S)	Org-Design(NW&S)	Directorate	New Delhi	Headquarter	Active
+Dte-WSE	HRM	Directorate	New Delhi	Headquarter	Active
+Div-NEID II Aizawl	Cir-NEIC Cum Mon Dte Shillong	Division	Aizawl	Regional	Active
+Div-CD Bengaluru	Cir-HOC Bengaluru	Division	Bengaluru Rural	Regional	Active
+SD-BGSD Muzaffarpur	Div-LGD 1 Patna	Sub Div	Muzaffarpur	Regional	Active
+Dte-RDC 1	Org-P&D	Directorate	New Delhi	Headquarter	Active
+SD-GSD Lucknow	Div-MGD 2 Lucknow	Sub Div	Lucknow	Regional	Active
+Dte-HYD(NE)	Org-HSO	Directorate	New Delhi	Headquarter	Active
+Dte-M&A (TS) Hyderabad	Org-KGBO Hyderabad	Directorate	Hyderabad	Regional	Active
+Div-NEID III Itanagar	Cir-HO&IC Guwahati	Division	Papum Pare	Regional	Active
+Cir-HOC Varanasi	Org-LGBO Patna	Circle	Varanasi	Regional	Active
+Dte-EM	Org-EMO	Directorate	New Delhi	Headquarter	Active
+SD-PPSD Nalbari	Div-MBD Guwahati	Sub Div	Nalbari	Regional	Active
+SD-JSD Jang	Div-NEID III Itanagar	Sub Div	Tawang	Regional	Active
+Div-SID Gangtok	Cir-IC Gangtok	Division	Gangtok	Regional	Active
+SD-ISD 1 West Sikkim	Div-SID Gangtok	Sub Div	Gyalshing	Regional	Active
+Dte-TC	HRM	Directorate	New Delhi	Headquarter	Active
+Cir-NEIC Cum Mon Dte Shillong	Org-BOBO Shillong	Circle	East Khasi Hills	Regional	Active
+SD-UWSD Nagpur	Div-WD Nagpur	Sub Div	Nagpur	Regional	Active
+Div-UGD Hyderabad	Cir-GC Hyderabad	Division	Hyderabad	Regional	Active
+SD-UGSD Aurangabad	Div-UGD Hyderabad	Sub Div	Aurangabad	Regional	Active
+SD-LSMGSD Patna	Div-LGD 2 Patna	Sub Div	Patna	Regional	Active
+Dte-DSM	Org-DSO	Directorate	New Delhi	Headquarter	Active
+SD-UBSD Pune	Div-UKD Pune	Sub Div	Pune	Regional	Active
+Dte-CA(Irrigation 2)	Org-PAO	Directorate	New Delhi	Headquarter	Active
+Div-NEID I Silchar	Cir-NEIC Cum Mon Dte Shillong	Division	Cachar	Regional	Active
+Org-LGBO Patna	MEMBER(RM)	Org	Patna	Regional	Active
+Org-MERO Bhubaneswar	MEMBER(RM)	Org	Khordha	Regional	Active
+Dte-IPO	Org-POMIO	Directorate	New Delhi	Headquarter	Active
+Cir-HOC Vaishali	Org-YBO New Delhi	Circle	Vaishali	Regional	Active
+Dte-FM 1	Org-FMO	Directorate	New Delhi	Headquarter	Active
+Dte-FFM	Org-FMO	Directorate	New Delhi	Headquarter	Active
+SECRETARY(CWC)	HRM	Directorate	New Delhi	Headquarter	Active
+Cir-PC Faridabad	Org-YBO New Delhi	Circle	Faridabad	Regional	Active
+Div-SHD Shimla	Dte-M&A Shimla	Division	Shimla	Regional	Active
+Div-HGD Haridwar	Cir-HOC Dehradun	Division	Haridwar	Regional	Active
+Dte-IP(S)	Org-IMO	Directorate	New Delhi	Headquarter	Active
+Org-IBO Chandigarh	MEMBER(RM)	Org	Chandigarh	Regional	Active
+Div-ERD Bhubaneswar	Cir-HOC Bhubaneswar	Division	Khordha	Regional	Active
+Cir-KCC Hyderabad	Org-KGBO Hyderabad	Circle	Hyderabad	Regional	Active
+NWA-PUNE	CHAIRMAN Office	Org	Pune	Regional	Active
+Div-WD Nagpur	Cor-SE(C) Nagpur	Division	Nagpur	Regional	Active
+Org-NBO Bhopal	MEMBER(RM)	Org	Bhopal	Regional	Active
+SD-NSD 2 Jammu	Div- CD Jammu	Sub Div	Jammu	Regional	Active
+SD-MNSD 2 Bhopal	Div-ND Bhopal	Sub Div	Bhopal	Regional	Active
+Org-MTBO Gandhinagar	MEMBER(RM)	Org	Gandhinagar	Regional	Active
+Vigilance Section	SECRETARY(CWC)	Directorate	New Delhi	Headquarter	Active
+SD-UTSD Bhusawal	Div-TD Surat	Sub Div	Jalgaon	Regional	Active
+Div-UYD New Delhi	Cir-HOC Noida	Division	New Delhi	Headquarter	Active
+Div-CD Jaipur	Cir-HOC Noida	Division	Jaipur	Regional	Active
+SD-KSD Banda	Div-LYD Agra	Sub Div	Banda	Regional	Active
+SD-MISD 3 Silchar	Div-MID Shillong	Sub Div	Cachar	Regional	Active
+Div-UKD Pune	Cir-KCC Hyderabad	Division	Pune	Regional	Active
+Div-LGD 1 Patna	Dte-MON Patna	Division	Patna	Regional	Active
+SD-MGURSD Moradabad	Div-MGD 2 Lucknow	Sub Div	Moradabad	Regional	Active
+Dte-NP	Org-PPO	Directorate	New Delhi	Headquarter	Active
+SD-NSD 1 Jammu	Div- CD Jammu	Sub Div	Jammu	Regional	Active
+Div-LBD Jalpaiguri	Cir-IC Gangtok	Division	Jalpaiguri	Regional	Active
+Org-TBDBO Kolkata	MEMBER(RM)	Org	Kolkata	Regional	Active
+Div-LGD 3 Berhampore	Cir-HOC Maithon	Division	Murshidabad	Regional	Active
+Div-UBD Dibrugarh	Cir-HO&IC Guwahati	Division	Dibrugarh	Regional	Active
+SD-UBSD Maithon	Div-DD Asansol	Sub Div	Dhanbad	Regional	Active
+Div-TD Surat	Cir-HOC Gandhinagar	Division	Surat	Regional	Active
+Div-LKD Hyderabad	Cir-KCC Hyderabad	Division	Hyderabad	Regional	Active
+SD-MSD Guwahati	Div-MBD Guwahati	Sub Div	Kamrup Metro	Regional	Active
+Div-MBD Guwahati	Cir-HO&IC Guwahati	Division	Kamrup Metro	Regional	Active
+SD-ISD Jagdalpur	Div-LGD Hyderabad	Sub Div	Bastar	Regional	Active
+Div-MD Gandhinagar	Cir-HOC Gandhinagar	Division	Gandhinagar	Regional	Active
+Div-LGD Hyderabad	Cir-GC Hyderabad	Division	Hyderabad	Regional	Active
+
