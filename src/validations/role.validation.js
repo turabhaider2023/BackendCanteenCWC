@@ -1,20 +1,25 @@
 import {Role} from "../models/role.js"
 import mongoose from "mongoose"
+import ApiError from "../utils/ApiError.js"
 
 
 export const createRoleValidation = async(req)=>{
     const {roleName} = req.body
 
     if(!roleName){
-        throw new Error("roleName is required")
+        throw new ApiError(
+            400,
+            "Role name is required")
     }
 
     if(typeof roleName !=="string"){
-        throw new Error("roleName must be a string")
+        throw new ApiError(400,
+            "Role name must be a string")
     }
 
     if(roleName.trim()===""){
-        throw new Error("roleName can not be empty")
+        throw new ApiError(400,
+            "Role name cannot be empty")
     }
 
     const existingRole = await Role.findOne({
@@ -23,7 +28,8 @@ export const createRoleValidation = async(req)=>{
     })
 
     if(existingRole){
-        throw new Error("role already exists")
+        throw new ApiError(409,
+            "Role already exists")
     }
 }
 
@@ -32,24 +38,28 @@ export const updateRoleValidation = async(req)=>{
    const {roleName,isActive} = req.body
 
    if(Object.keys(req.body).length===0){
-    throw new Error("can not update empty object")
+    throw new ApiError(400,
+        "Cannot update an empty request body")
    }
 
    if(roleName!==undefined){
 
         if(typeof roleName !=="string"){
-            throw new Error("roleName must be a string")
+            throw new ApiError(400,
+                "Role name must be a string")
         }
 
         if(roleName.trim()==="" ){
-            throw new Error("roleName can not be empty")
+            throw new ApiError(400,
+                "Role name cannot be empty")
         }
 
         
    }
 
    if(isActive!==undefined && typeof isActive !=="boolean"){
-        throw new Error("isActive must be only true or false")
+        throw new ApiError(400,
+            "isActive must be either true or false")
    }
 
    const allowedUpdates = ["roleName","isActive"]
@@ -61,11 +71,13 @@ export const updateRoleValidation = async(req)=>{
    )
 
    if(!validRoles){
-    throw new Error("this role is not allowed to update")
+    throw new ApiError(400,
+        "updating this role is not allowed")
    }
 
    if(!mongoose.Types.ObjectId.isValid(roleId)){
-    throw new Error("roleId is not valid")
+    throw new ApiError(400,
+        "Role ID is not valid")
    }
 
    const existingRoleById = await Role.findOne({
@@ -74,7 +86,8 @@ export const updateRoleValidation = async(req)=>{
 });
 
     if (!existingRoleById) {
-        throw new Error("role not found");
+        throw new ApiError(404,
+            "Role not found");
     }
 
    if(roleName!==undefined){
@@ -85,7 +98,8 @@ export const updateRoleValidation = async(req)=>{
         })
 
         if(existingRole){
-            throw new Error("role already exists")
+            throw new ApiError(409,
+                "Role already exists")
         }
 
 }}
@@ -94,7 +108,8 @@ export const deleteRoleValidation = async(req)=>{
         const {roleId}=req.params
 
         if(!mongoose.Types.ObjectId.isValid(roleId)){
-            throw new Error("roleId is not valid")
+            throw new ApiError(400,
+                "Role ID is not valid")
         }
 
         const existingRole = await Role.findOne({
@@ -103,6 +118,7 @@ export const deleteRoleValidation = async(req)=>{
         })
 
         if(!existingRole){
-            throw new Error("role does not exist")
+            throw new ApiError(404,
+                "Role not found")
         }
 }

@@ -3,10 +3,11 @@ import {createRoleValidation
     ,deleteRoleValidation
 } from "../validations/role.validation.js"
 import {Role} from "../models/role.js"
+import asyncHandler from "../utils/asyncHandler.js";
+import ApiResponse from "../utils/ApiResponse.js";
 
 
-export const createRole = async(req,res)=>{
-    try {
+export const createRole = asyncHandler(async(req,res)=>{
         await createRoleValidation(req)
 
         const {roleName} = req.body
@@ -17,41 +18,37 @@ export const createRole = async(req,res)=>{
 
         const newRole = await Role.create(data)
 
-        return res.status(201).json({
-            message:"role created successfully",
-            data:newRole
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in creating the role",
-            error:error.message
-        })
-    }
-}
+        return res.status(201).json(
+           new ApiResponse(
+            201,
+            newRole,
+            "Role created successfully"
 
-export const getAllRoles = async(req,res)=>{
-    try {
+           ))
+    
+    
+})
+
+export const getAllRoles = asyncHandler(async(req,res)=>{
         const allRoles = await Role
         .find({
             isDeleted:false
         })
         .sort({roleName:1})
 
-        return res.status(200).json({
-            message:"all roles fetched successfully",
-            data:allRoles
-        })
-    } catch (error) {
-        return res.status(500).json({
-            message:"error in fetching the roles",
-            error:error.message
-        })
-        
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                allRoles,
+                "All roles fetched successfully"
 
-export const updateRole = async(req,res)=>{
-    try {
+            )
+        )
+       
+   
+})
+
+export const updateRole = asyncHandler(async(req,res)=>{
         await updateRoleValidation(req)
         const {roleId}=req.params
         const {roleName,isActive} = req.body
@@ -74,20 +71,17 @@ export const updateRole = async(req,res)=>{
 
         )
 
-        return res.status(200).json({
-            message:"role updated successfully",
-            data:updatedRole
-        })
-    } catch (error) {
-        return res.status(500).json({
-            message:"error in updating role",
-            error:error.message
-        })
-    }
-}
+        return res.status(200).json(
+          new ApiResponse(
+            200,
+            updatedRole,
+            "Role updated successfully"
 
-export const deleteRole = async(req,res)=>{
-    try {
+          )
+        )
+    })
+
+export const deleteRole = asyncHandler(async(req,res)=>{
         await deleteRoleValidation(req)
         const {roleId} = req.params
 
@@ -100,15 +94,13 @@ export const deleteRole = async(req,res)=>{
 
         )
 
-        return res.status(200).json({
-            message:"role deleted successfully",
-            data:deletedRole
-        })
-    } catch (error) {
-        return res.status(500).json({
-            message:"error in deleting the role",
-            error:error.message
-        })
-        
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                deletedRole,
+                "Role soft deleted successfully"
+
+            )
+       )
+  
+})
