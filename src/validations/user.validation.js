@@ -4,6 +4,7 @@ import { Office } from "../models/office.js";
 import { Role } from "../models/role.js";
 import mongoose from "mongoose";
 import validator from "validator";
+import ApiError from "../utils/ApiError.js"
 
 export const createUserValidation = async(req)=>{
     const {
@@ -19,54 +20,67 @@ export const createUserValidation = async(req)=>{
    
     if(!name||!officialEmail|| !mobileNumber ||!designationId||!officeId){
         throw new 
-        Error("name,officialEmail,mobileNumber,designationId and officeId are required")
+        ApiError(400,
+            "Name, official Email, mobileNumber, designation ID and office ID are required")
     }
 
     if(typeof name !=="string"){
-        throw new Error("name must a string type")
+        throw new ApiError(400,
+            "Name must be a string ")
     }
     if(name.trim()===""){
-        throw new Error("name is empty")
+        throw new ApiError(400,
+            "Name cannot be empty")
     }
      
     if(typeof officialEmail !=="string"){
-        throw new Error("email must be a string")
+        throw new ApiError(400,
+            "Email must be a string")
     }
     if(officialEmail.trim()===""){
-        throw new Error("email is empty")
+        throw new ApiError(400,
+            "Email cannot be empty")
     }
 
     if(!validator.isEmail(officialEmail.trim())){
-        throw new Error("email is invalid")
+        throw new ApiError(400,
+            "Email is invalid")
     }
 
     if(typeof mobileNumber!=="string"){
-        throw new Error("mobile number must be a string")
+        throw new ApiError(400,
+            "Mobile number must be a string")
     }
     if(mobileNumber.trim()===""){
-        throw new Error("mobile number is empty")
+        throw new ApiError(400,
+            "Mobile number cannot be empty")
     }
 
     if(!validator.isMobilePhone(mobileNumber.trim(),"en-IN")||
     mobileNumber.trim().length!==10){
-        throw new Error("mobile number must be a 10 digit Indian mobile number")
+        throw new ApiError(400,
+            "Mobile number must be a 10 digit Indian mobile number")
     }
 
     if(!mongoose.Types.ObjectId.isValid(designationId)){
-        throw new Error("designationId is not valid")
+        throw new ApiError(400,
+            "Designation ID is not valid")
     }
 
     if(!mongoose.Types.ObjectId.isValid(officeId)){
-        throw new Error("officeId is not valid")
+        throw new ApiError(400,
+            "Office Id is not valid")
     }
 
     if(roles!==undefined){
         if(!Array.isArray(roles)){
-            throw new Error("roles must an array")
+            throw new ApiError(400,
+                "roles must be an array")
         }
 
         if(roles.length===0){
-            throw new Error("role array can not be empty")
+            throw new ApiError(400,
+                "Role array cannot be empty")
         }
 
         const allRolesIdsValid = roles.every((roleId)=>
@@ -74,7 +88,8 @@ export const createUserValidation = async(req)=>{
         )
 
         if(!allRolesIdsValid){
-            throw new Error("one or more roleIds are not valid")
+            throw new ApiError(400,
+                "One or more role IDs are not valid")
         }
 
         
@@ -89,7 +104,8 @@ export const createUserValidation = async(req)=>{
     })
 
     if(existingUserByEmail){
-        throw new Error("user already exist")
+        throw new ApiError(409,
+            "User already exists")
     }
 
     const existingUserByMobile = await User.findOne({
@@ -98,7 +114,8 @@ export const createUserValidation = async(req)=>{
     })
 
     if(existingUserByMobile){
-        throw new Error("user already exist")
+        throw new ApiError(409,
+            "User already exist")
     }
 
     const existingDesignation = await Designation.findOne({
@@ -107,7 +124,8 @@ export const createUserValidation = async(req)=>{
     })
 
     if(!existingDesignation){
-        throw new Error("designation not exist")
+        throw new ApiError(404,
+            "Designation not found")
     }
 
     const exisitingOfficeId = await Office.findOne({
@@ -116,7 +134,7 @@ export const createUserValidation = async(req)=>{
     })
 
     if(!exisitingOfficeId){
-        throw new Error("office does not exist")
+        throw new ApiError(404,"office not found")
     }
 
     //Request validation me tumne roleIds ka format check kar liya — good.
@@ -129,7 +147,8 @@ export const createUserValidation = async(req)=>{
     });
 
     if (existingRoles.length !== roles.length) {
-        throw new Error("one or more roles do not exist");
+        throw new ApiError(404,
+            "One or more roles not found");
     }
 
     
@@ -141,7 +160,8 @@ export const createUserValidation = async(req)=>{
     });
 
     if (!defaultUserRole) {
-        throw new Error('default role "User" does not exist');
+        throw new ApiError(404,
+            "Default role 'User' not found");
     }
 }
 
@@ -166,7 +186,8 @@ export const updateUserValidation = async (req) => {
     // =========================
 
     if (Object.keys(req.body).length === 0) {
-        throw new Error("can not update empty object");
+        throw new ApiError(400,
+            "Cannot update empty object");
     }
 
     const allowedUpdates = [
@@ -186,73 +207,88 @@ export const updateUserValidation = async (req) => {
     );
 
     if (!isValidUpdate) {
-        throw new Error("this field is not allowed to update");
+        throw new ApiError(400,
+            "This field is not allowed to update");
     }
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
-        throw new Error("userId is not valid");
+        throw new ApiError(400,
+            "User ID is not valid");
     }
 
     if (name !== undefined) {
         if (typeof name !== "string") {
-            throw new Error("name must be a string");
+            throw new ApiError(400,
+                "name must be a string");
         }
 
         if (name.trim() === "") {
-            throw new Error("name can not be empty");
+            throw new ApiError(400,
+                "Name cannot be empty");
         }
     }
 
     if (officialEmail !== undefined) {
         if (typeof officialEmail !== "string") {
-            throw new Error("officialEmail must be a string");
+            throw new ApiError(400,
+                "Official Email must be a string");
         }
 
         if (officialEmail.trim() === "") {
-            throw new Error("officialEmail can not be empty");
+            throw new ApiError(400,
+                "Official Email cannot be empty");
         }
 
         if (!validator.isEmail(officialEmail.trim())) {
-            throw new Error("officialEmail is invalid");
+            throw new ApiError(400,
+                "Official Email is invalid");
         }
     }
 
     if (mobileNumber !== undefined) {
         if (typeof mobileNumber !== "string") {
-            throw new Error("mobileNumber must be a string");
+            throw new ApiError(400,
+                "Mobile Number must be a string");
         }
 
         if (mobileNumber.trim() === "") {
-            throw new Error("mobileNumber can not be empty");
+            throw new ApiError(
+                400,
+                "mobile Number cannot be empty");
         }
 
         if (
             !validator.isMobilePhone(mobileNumber.trim(), "en-IN") ||
             mobileNumber.trim().length !== 10
         ) {
-            throw new Error("mobileNumber must be a 10 digit Indian mobile number");
+            throw new ApiError(400,
+                "Mobile Number must be a 10 digit Indian mobile number");
         }
     }
 
     if (designationId !== undefined) {
         if (!mongoose.Types.ObjectId.isValid(designationId)) {
-            throw new Error("designationId is not valid");
+            throw new ApiError(400,
+                "Designation ID is not valid");
         }
     }
 
     if (officeId !== undefined) {
         if (!mongoose.Types.ObjectId.isValid(officeId)) {
-            throw new Error("officeId is not valid");
+            throw new ApiError(400,
+                "Office ID is not valid");
         }
     }
 
     if (roles !== undefined) {
         if (!Array.isArray(roles)) {
-            throw new Error("roles must be an array");
+            throw new ApiError(400,
+                "Roles must be an array");
         }
 
         if (roles.length === 0) {
-            throw new Error("roles array can not be empty");
+            throw new ApiError(400,
+                "Roles array cannot be empty");
         }
 
         const allRolesIdsValid = roles.every((roleId) =>
@@ -260,12 +296,14 @@ export const updateUserValidation = async (req) => {
         );
 
         if (!allRolesIdsValid) {
-            throw new Error("one or more roleIds are not valid");
+            throw new ApiError(400,
+                "One or more role IDs are not valid");
         }
     }
 
     if (isActive !== undefined && typeof isActive !== "boolean") {
-        throw new Error("isActive must be true or false");
+        throw new ApiError(400,
+            "isActive must be either true or false");
     }
 
     // =========================
@@ -278,7 +316,8 @@ export const updateUserValidation = async (req) => {
     });
 
     if (!existingUser) {
-        throw new Error("user does not exist");
+        throw new ApiError(404,
+            "User not found");
     }
 
     if (officialEmail !== undefined) {
@@ -289,7 +328,8 @@ export const updateUserValidation = async (req) => {
         });
 
         if (existingUserByEmail) {
-            throw new Error("officialEmail already exists");
+            throw new ApiError(409,
+                "Official Email already exists");
         }
     }
 
@@ -301,7 +341,8 @@ export const updateUserValidation = async (req) => {
         });
 
         if (existingUserByMobile) {
-            throw new Error("mobileNumber already exists");
+            throw new ApiError(409,
+                "Mobile Number already exists");
         }
     }
 
@@ -312,7 +353,8 @@ export const updateUserValidation = async (req) => {
         });
 
         if (!existingDesignation) {
-            throw new Error("designation does not exist");
+            throw new ApiError(404,
+                "Designation not found");
         }
     }
 
@@ -323,7 +365,8 @@ export const updateUserValidation = async (req) => {
         });
 
         if (!existingOffice) {
-            throw new Error("office does not exist");
+            throw new ApiError(404,
+                "Office not found");
         }
     }
 
@@ -334,7 +377,8 @@ export const updateUserValidation = async (req) => {
         });
 
         if (existingRoles.length !== roles.length) {
-            throw new Error("one or more roles do not exist");
+            throw new ApiError(404,
+                "One or more roles not found");
         }
     }
 };
@@ -346,7 +390,8 @@ export const deleteUserValidation = async(req)=>{
     // 1. REQUEST DATA VALIDATIONS
     // =========================
     if(!mongoose.Types.ObjectId.isValid(userId)){
-        throw new Error("userId is not valid")
+        throw new ApiError(400,
+            "User ID is not valid")
     }
 
     // =========================
@@ -358,6 +403,7 @@ export const deleteUserValidation = async(req)=>{
     })
 
     if(!existingUser){
-        throw new Error("user does not exist")
+        throw new ApiError(404,
+            "user not found")
     }
 }
