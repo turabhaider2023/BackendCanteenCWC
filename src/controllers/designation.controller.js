@@ -1,9 +1,10 @@
-import mongoose from "mongoose"
 import {Designation} from "../models/designation.js"
 import {validateCreateDesignation,validateUpdateDesignation,validateDeleteDesignation} from "../validations/designation.validation.js"
+import asyncHandler from "../utils/asyncHandler.js";
+import ApiResponse from "../utils/ApiResponse.js";
 
-export const createDesignation = async(req,res)=>{
-    try {
+export const createDesignation = asyncHandler(async (req,res)=>{
+    
         await validateCreateDesignation(req)
 
         const{designationName,level}=req.body
@@ -13,39 +14,34 @@ export const createDesignation = async(req,res)=>{
             level:Number(level),
 
         })
-        return res.status(201).json({
-            message:"designation created successfully",
-            data:newRecord
-        })
-    
-    }
-    catch (error) {
-        res.status(400).json({
-            message:"error in creating the designation",
-            error:error.message
-        })
-        
-    }
-}
+       
+        return res.status(201).json(
+            new ApiResponse(
+                201,
+                newRecord,
+                "Designation created successfully"
 
-export const getAllDesignations = async(req,res)=>{
-    try {
+            )
+        
+        )
+    
+    
+})
+
+export const getAllDesignations = asyncHandler(async (req,res)=>{
         const allDesignations = await Designation
         .find({isDeleted:false})
         .sort({designationName:1})
-        return res.status(200).json({
-            message:"all designations fetched successfully",
-            data:allDesignations
-        })
-    } catch (error) {
-        res.status(400).json({
-            message:error.message,
-        })
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                allDesignations,
+                "All designations fetched successfully"
+            ))
+  
+})
 
-export const updateDesignation = async(req,res)=>{
-    try {
+export const updateDesignation = asyncHandler(async (req,res)=>{
         await validateUpdateDesignation(req)
         const {designationId} = req.params
 
@@ -67,41 +63,40 @@ export const updateDesignation = async(req,res)=>{
         const updatedDesignation = await Designation.findByIdAndUpdate(
             designationId,
             updateData,
-            {new:true})
+            {returnDocument: "after"})
         
-        return res.status(200).json({
-            message:"designation updated successfully",
-            data:updatedDesignation
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in updating the designation",
-            error:error.message
-        })
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                updatedDesignation,
+                "Designation updated successfully"
 
-export const deleteDesignation = async(req,res)=>{
-    try {
+            )
+            
+        )
+   
+})
+
+export const deleteDesignation = asyncHandler(async (req,res)=>{
+  
         await validateDeleteDesignation(req)
         const { designationId } = req.params;
 
-        const deleteDesignation = await Designation.findByIdAndUpdate(
+        const deletedDesignation = await Designation.findByIdAndUpdate(
             designationId,
             {isDeleted:true,
              isActive:false
             },
-            {new:true}
+            {returnDocument:"after"}
         )
 
-        return res.status(200).json({
-            message:"designation soft deleted successfully",
-            data:deleteDesignation
-        })
-    } catch (error) {
-        res.status(400).json({
-            message:"error in deleting the designation",
-            error:error.message
-        })
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                deleteDesignation,
+                "Designation soft deleted successfully"
+            )
+        )
+    
+    
+})

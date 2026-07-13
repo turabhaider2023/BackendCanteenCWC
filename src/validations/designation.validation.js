@@ -1,33 +1,44 @@
 import {Designation} from "../models/designation.js"
 import mongoose from "mongoose"
+import ApiError from "../utils/ApiError.js"
 
 export const validateCreateDesignation = async(req)=>{
         const {designationName,level}=req.body
         
 
         if(!designationName || !level){
-            throw new Error("designation and level both are required")
+            throw new ApiError(
+                400,
+                "Designation and level both are required"
+            )
         }
 
         const trimmedDesignationName = designationName.trim()
 
         if(trimmedDesignationName===""){
-            throw new Error("designation can not be empty")
+           throw new ApiError(
+            400,
+            "Designation cannot be empty"
+           )
         }
 
         if(isNaN(Number(level))){
-            throw new Error("level must be a number")
+            throw new ApiError(
+                400,
+                "Level must be a number")
         }
 
         
-        const isExist = await Designation
+        const existingDesignation = await Designation
         .findOne({
             designationName:trimmedDesignationName,
             isDeleted:false
         })
 
-        if(isExist){
-            throw new Error("designation already exist")
+        if(existingDesignation){
+            throw new ApiError(
+                409,
+                "Designation already exists")
         }
 }
 
@@ -36,7 +47,9 @@ export const validateUpdateDesignation = async(req)=>{
     const {designationName,level,isActive} = req.body
 
     if(Object.keys(req.body).length===0){
-        throw new Error("can not update empty body")
+        throw new ApiError(
+            400,
+            "Can not update empty request body")
     }
     
     const allowedUpdates = ["designationName" ,"level", "isActive"]
@@ -48,26 +61,45 @@ export const validateUpdateDesignation = async(req)=>{
     )
 
     if(!isValidUpdate){
-        throw new Error("updating this field is not allowed")
+        throw new ApiError(
+            400,
+            "Updating this field is not allowed")
     }
 
     if(designationName!==undefined){
         if(designationName.trim()===""){
-            throw new Error("designationName is empty")
+            throw new ApiError(
+                400,
+                "Designation name cannot be empty")
         }
     }
 
     if(level!==undefined){
         if(isNaN(Number(level))){
-            throw new Error("level is not a number")
+            throw new ApiError(
+                400,
+                "Level must be a number")
         }
     }
 
     //DB validations
 
     if(!mongoose.Types.ObjectId.isValid(designationId)){
-        throw new Error("please enter a valid designationId")
+        throw new ApiError(
+            400,
+            "DesignationId is not valid")
     }
+    const designation = await Designation.findOne({
+    _id: designationId,
+    isDeleted: false
+});
+
+if (!designation) {
+    throw new ApiError(
+        404,
+        "Designation not found"
+    );
+}
     
     if(designationName!==undefined){
         const existingDesignation = await Designation.findOne({
@@ -77,7 +109,9 @@ export const validateUpdateDesignation = async(req)=>{
         })
 
         if(existingDesignation){
-            throw new Error("designation already exist")
+            throw new ApiError(
+                409,
+                "Designation already exists")
         }
     }
 }
@@ -87,16 +121,20 @@ export const validateDeleteDesignation = async(req)=>{
       
 
         if(!mongoose.Types.ObjectId.isValid(designationId)){
-            throw new Error("designationId is not valid")
+            throw new ApiError(
+                400,
+                "Designation ID is not valid")
         }
 
-        const isExist = await Designation.findOne({
+        const existingDesignation = await Designation.findOne({
             _id:designationId ,
             isDeleted:false
                                     })
         
-        if(!isExist){
-            throw new Error("designation does not exist")
+        if(!existingDesignation){
+            throw new ApiError(
+                404,
+                "Designation not found")
         }
 
 
