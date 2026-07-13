@@ -3,9 +3,10 @@ import {createOfficeValidation
     deleteOfficeValidation
 } from "../validations/office.validation.js"
 import { Office } from "../models/office.js"
+import asyncHandler from "../utils/asyncHandler.js"
+import ApiResponse from "../utils/ApiResponse.js"
 
-export const createOffice = async(req,res)=>{
-    try {
+export const createOffice = asyncHandler(async(req,res)=>{
         await createOfficeValidation(req)
         const {officeName,parentOfficeId,officeTypeId,city,regionType} =req.body
 
@@ -25,41 +26,37 @@ export const createOffice = async(req,res)=>{
 
         const newOffice = await Office.create(officeData)
 
-        return res.status(201).json({
-            message:"office created successfully",
-            data:newOffice
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in creating the office",
-            error:error.message
-        })
-        
-    }
-}
+        return res.status(201).json(
+            new ApiResponse(
+                201,
+                newOffice,
+                "Office created successfully"
 
-export const getAllOffices = async(req,res)=>{
-    try {
+            )
+        )
+    
+    
+})
+
+export const getAllOffices = asyncHandler(async(req,res)=>{
         const allOffices = await Office
         .find({
             isDeleted:false
         })
         .sort({officeName:1})
 
-        return res.status(200).json({
-            message:"all offices fetched successfully",
-            data:allOffices
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in the fetching the offices",
-            error:error.message
-        })
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                allOffices,
+                "all offices fetched successfully"
 
-export const updateOffice = async(req,res)=>{
-    try {
+            )
+        )
+    
+})
+
+export const updateOffice = asyncHandler(async (req,res)=>{
 
         await updateOfficeValidation(req)
         const {officeId} = req.params
@@ -102,22 +99,17 @@ export const updateOffice = async(req,res)=>{
         updateData,
         {returnDocument:"after"}
     )
-    return res.status(200).json({
-        message:"office updated successfully",
-        data:updatedOffice,
-       
-    })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in updating office",
-            erro:error.message
-        })
-        
-    }
-}
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            updatedOffice,
+            "office updated successfully"
+        )
+   )
 
-export const deleteOffice = async(req,res)=>{
-    try {
+})
+
+export const deleteOffice = asyncHandler(async (req,res)=>{
         await deleteOfficeValidation(req)
         const {officeId} = req.params
         
@@ -129,15 +121,13 @@ export const deleteOffice = async(req,res)=>{
             {returnDocument:"after"}
         )
 
-        return res.status(200).json({
-            message:"office deleted successfully",
-            data:deletedOffice
-        })
-    } catch (error) {
-        return res.status(400).json({
-            message:"error in deleting the office",
-            error:error.message
-        })
-        
-    }
-}
+        return res.status(200).json(
+            new ApiResponse(
+                200,
+                deletedOffice,
+                "office deleted successfully"
+
+            )
+        )
+   
+})

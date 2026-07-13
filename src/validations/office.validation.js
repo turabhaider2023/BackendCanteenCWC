@@ -1,30 +1,40 @@
 import mongoose from "mongoose";
 import {Office} from "../models/office.js"
 import {OfficeType} from "../models/officeType.js"
+import ApiError from "../utils/ApiError.js";
 
 export const createOfficeValidation = async(req)=>{
     const {officeName,officeTypeId,regionType,parentOfficeId} = req.body;
     if(!officeName||!officeTypeId||!regionType){
-        throw new Error("officeName,officeTypeId,regionType are required")
+        throw new ApiError(
+            400,
+            "Office name ,office type ID, region type are required")
     }
 
     if(officeName.trim()===""){
-        throw new Error("officeName is empty")
+        throw new ApiError(
+            400,
+            "Office name cannot be empty")
     }
 
     if(!mongoose.Types.ObjectId.isValid(officeTypeId)){
-        throw new Error("officeTypeId is not valid")
+        throw new ApiError(
+            400,
+            "Office type ID is not valid")
     }
 
     if(parentOfficeId!==undefined){
         if(!mongoose.Types.ObjectId.isValid(parentOfficeId)){
-            throw new Error("parentofficeId is not valid")
+            throw new ApiError(400,
+                "Parent office ID is not valid")
         }
     }
     const allowedRegionTypes = ["Headquarter","Regional"]
     
     if(!allowedRegionTypes.includes(regionType)){
-        throw new Error("regionType must be Headquarter or Regional")
+        throw new ApiError(
+            400,
+            "Region type must be either 'Headquarter' or 'Regional' ")
     }
     // DB validation 
     //1.check is there any officeName already exist in office model
@@ -38,7 +48,9 @@ export const createOfficeValidation = async(req)=>{
     })
 
      if(existingOffice){
-            throw new Error("officeName already exists")
+            throw new ApiError(
+                409,
+                "Office name already exists")
         }
 
     if(parentOfficeId!==undefined){
@@ -48,7 +60,9 @@ export const createOfficeValidation = async(req)=>{
         })
 
         if(!existingParentOffice){
-        throw new Error("parent office does not exist")
+        throw new ApiError(
+            404,
+            "Parent office not found")
     }
 }  
 
@@ -59,7 +73,8 @@ export const createOfficeValidation = async(req)=>{
         })
 
         if(!existingOfficeType){
-            throw new Error("officeTypeId does not exist ")
+            throw new ApiError(404,
+                "Office type ID not found")
         }
     
 
@@ -75,40 +90,11 @@ export const updateOfficeValidation = async(req)=>{
         isActive}=req.body
 
     if(Object.keys(req.body).length===0){
-        throw new Error("can not update empty body")
+        throw new ApiError(
+            400,
+            "Can not update empty request body")
     }
 
-    if(officeName!==undefined){
-        if(officeName.trim()===""){
-            throw new Error("officeName is empty")
-        }
-    }
-
-    if(parentOfficeId!==undefined){
-        if(!mongoose.Types.ObjectId.isValid(parentOfficeId)){
-            throw new Error("parentOfficeId is not valid")
-        }
-    }
-
-    if(officeTypeId!==undefined){
-        if(!mongoose.Types.ObjectId.isValid(officeTypeId)){
-            throw new Error("officeTypeId is not valid")
-        }
-    }
-
-    if(city!==undefined){
-        if(city.trim()===""){
-            throw new Error("city is empty")
-        }
-    }
-
-    if(regionType!==undefined){
-        const allowedRegionType = ["Headquarter","Regional"]
-
-        if(!allowedRegionType.includes(regionType)){
-            throw new Error("RegionType must be Headquarter or Regional")
-        }
-    }
 
     const allowedUpdates = ["officeName"
         ,"parentOfficeId"
@@ -119,30 +105,73 @@ export const updateOfficeValidation = async(req)=>{
 
     const officeKeys = Object.keys(req.body)
     
-    const validUpdates=officeKeys.every((feild)=>
-        allowedUpdates.includes(feild)
+    const validUpdates=officeKeys.every((field)=>
+        allowedUpdates.includes(field)
     )
 
     if(!validUpdates){
-        throw new Error("can not update this field")
+        throw new ApiError(400,
+            "Cannot update this field")
+    }
+
+    
+    if(officeName!==undefined){
+        if(officeName.trim()===""){
+            throw new ApiError(400,
+                "Office name cannot be empty")
+        }
+    }
+
+    if(parentOfficeId!==undefined){
+        if(!mongoose.Types.ObjectId.isValid(parentOfficeId)){
+            throw new ApiError(400,
+                "Parent Office ID is not valid")
+        }
+    }
+
+    if(officeTypeId!==undefined){
+        if(!mongoose.Types.ObjectId.isValid(officeTypeId)){
+            throw new ApiError(400,
+                "Office type ID is not valid")
+        }
+    }
+
+    if(city!==undefined){
+        if(city.trim()===""){
+            throw new ApiError(400,
+                "City cannot be empty")
+        }
+    }
+
+    if(regionType!==undefined){
+        const allowedRegionType = ["Headquarter","Regional"]
+
+        if(!allowedRegionType.includes(regionType)){
+            throw new ApiError(400,
+                "Region type must be either 'Headquarter' or 'Regional' ")
+        }
     }
 
     if(isActive!==undefined && typeof isActive !=="boolean"){
-        throw new Error("isActive must be true or false")
+        throw new ApiError(400,
+            "isActive must be either true or false")
     }
 
-    //DB validations
+   
 
     if(!mongoose.Types.ObjectId.isValid(officeId)){
-        throw new Error("officeId is not valid")
+        throw new ApiError(400,
+            "Office ID is not valid")
     }
 
     if(parentOfficeId!==undefined){
         if(parentOfficeId===officeId){
-            throw new Error("office can not be its own parent")
+            throw new ApiError(400,
+                "Office cannot be its own parent")
         }
     }
 
+    //Db validation
     if(officeName!==undefined){
         const existingOffice = await Office.findOne({
             officeName:officeName.trim(),
@@ -151,7 +180,8 @@ export const updateOfficeValidation = async(req)=>{
         })
 
         if(existingOffice){
-            throw new Error("office already exists")
+            throw new ApiError(409,
+                "Office already exists")
         }
     }
 
@@ -162,18 +192,20 @@ export const updateOfficeValidation = async(req)=>{
         })
 
         if(!existingParentOffice){
-            throw new Error("parent office does not exist")
+            throw new ApiError(404,
+                "parent office not found")
         }
     }
 
     if(officeTypeId!==undefined){
-        const existingofficeType = await OfficeType.findOne({
+        const existingOfficeType = await OfficeType.findOne({
             _id:officeTypeId,
             isDeleted:false
         })
 
-        if(!existingofficeType){
-            throw new Error("this office type does not exist")
+        if(!existingOfficeType){
+            throw new ApiError(404,
+                "Office type not found")
         }
     }
 
@@ -183,7 +215,8 @@ export const deleteOfficeValidation = async(req)=>{
     const {officeId} = req.params
 
     if(!mongoose.Types.ObjectId.isValid(officeId)){
-        throw new Error("officeId is not valid")
+        throw new ApiError(400,
+            "Office ID is not valid")
     }
 
     const existingOffice = await Office.findOne({
@@ -192,7 +225,8 @@ export const deleteOfficeValidation = async(req)=>{
     })
 
     if(!existingOffice){
-        throw new Error("office does not exist")
+        throw new ApiError(404,
+            "Office not found")
     }
 
     //check wheather the childOffice exists or not 
@@ -203,7 +237,8 @@ export const deleteOfficeValidation = async(req)=>{
     })
 
     if(existingChildOffice){
-        throw new Error("can not delete this office because child office exist")
+        throw new ApiError(409,
+            "Cannot delete this office because child office exists")
     }
 }
 
