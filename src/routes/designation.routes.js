@@ -1,4 +1,9 @@
 import express from "express";
+import validate from "../middlewares/validate.js";
+import {createDesignationSchema,
+    updateDesignationSchema,
+    deleteDesignationSchema
+} from "../schemas/designation.schema.js";
 
 import {
     createDesignation,
@@ -10,9 +15,9 @@ import {
 
 const designationRouter = express.Router()
 
-designationRouter.post("/",createDesignation);
+designationRouter.post("/",validate(createDesignationSchema),createDesignation);
 designationRouter.get("/",getAllDesignations)
-designationRouter.put("/:designationId",updateDesignation)
-designationRouter.delete("/:designationId",deleteDesignation)
+designationRouter.put("/:designationId",validate(updateDesignationSchema),updateDesignation)
+designationRouter.delete("/:designationId",validate(deleteDesignationSchema),deleteDesignation)
 
 export default designationRouter;

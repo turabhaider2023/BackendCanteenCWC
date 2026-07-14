@@ -5,6 +5,7 @@ import {createUserValidation
 import {User} from "../models/user.js";
 import { Role } from "../models/role.js";
 import ApiResponse from "../utils/ApiResponse.js"
+import ApiError from "../utils/ApiError.js";
 import asyncHandler from "../utils/asyncHandler.js";
 
 
@@ -69,7 +70,8 @@ export const getAllUsers = asyncHandler(async(req,res)=>{
 export const getUserById = asyncHandler(async(req,res)=>{
         const {userId} = req.params
         if (!mongoose.Types.ObjectId.isValid(userId)) {
-       throw new Error("userId is not valid");
+       throw new ApiError(400,
+        "User ID is not valid");
 }
 
         const user = await User.findOne({
@@ -81,16 +83,17 @@ export const getUserById = asyncHandler(async(req,res)=>{
          .populate("roles")
         
          if(!user){
-            return res.status(404).json({
-                message:"user does not exist"
-            })
+            throw new ApiError(
+                404,
+                "user not found"
+            )
          }
 
          return res.status(200).json(
             new ApiResponse(
                 200,
                 user,
-                " User fetched successfully"
+                "User fetched successfully"
 
             )
          )
@@ -152,9 +155,10 @@ export const updateUser = asyncHandler(async(req,res)=>{
         .populate("roles")
 
         return res.status(200).json(
-            200,
+            new ApiResponse(
+                200,
             updatedUser,
-            "User updated successfully"
+            "User updated successfully")
 
         )
     
@@ -175,10 +179,12 @@ export const deleteUser = asyncHandler(async(req,res)=>{
         )
 
         return res.status(200).json(
-            200,
+           new ApiResponse(
+             200,
             deletedUser,
             "User deleted successfully"
 
+           )
       )
    
 })
