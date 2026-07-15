@@ -1,16 +1,15 @@
-import {Designation} from "../models/designation.js"
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
+import { createDesignationService,
+    getAllDesignationsService,
+    updateDesignationService,
+    deleteDesignationService
+    
+} from "../services/designation.service.js"
 
 export const createDesignation = asyncHandler(async (req,res)=>{
 
-        const{designationName,level}=req.body
-
-        const newRecord = await Designation.create({
-            designationName:designationName.trim(),
-            level:Number(level),
-
-        })
+        const newRecord = await createDesignationService(req.body)
        
         return res.status(201).json(
             new ApiResponse(
@@ -25,41 +24,26 @@ export const createDesignation = asyncHandler(async (req,res)=>{
     
 })
 
-export const getAllDesignations = asyncHandler(async (req,res)=>{
-        const allDesignations = await Designation
-        .find({isDeleted:false})
-        .sort({designationName:1})
-        return res.status(200).json(
-            new ApiResponse(
-                200,
-                allDesignations,
-                "All designations fetched successfully"
-            ))
-  
+export const getAllDesignations = asyncHandler(async(req,res)=>{
+        const allDesignations = await getAllDesignationsService()
+
+    return res.status(200).json(
+                new ApiResponse(
+                    200,
+                    allDesignations,
+                    "All designations fetched successfully"
+                ))
 })
+        
+  
+
 
 export const updateDesignation = asyncHandler(async (req,res)=>{
-        const {designationId} = req.params
 
-        const {designationName,level,isActive} = req.body
-
-        const updateData = {}
-
-        if(designationName!==undefined){
-            updateData.designationName=designationName
-        }
-
-        if(level!==undefined){
-            updateData.level=level
-        }
-
-        if(isActive!==undefined){
-            updateData.isActive=isActive;
-        }
-        const updatedDesignation = await Designation.findByIdAndUpdate(
-            designationId,
-            updateData,
-            {returnDocument: "after"})
+    const updatedDesignation = await updateDesignationService({
+    designationId: req.params.designationId,
+    ...req.body
+})
         
         return res.status(200).json(
             new ApiResponse(
@@ -75,16 +59,9 @@ export const updateDesignation = asyncHandler(async (req,res)=>{
 
 export const deleteDesignation = asyncHandler(async (req,res)=>{
   
-        const { designationId } = req.params;
+        const deletedDesignation = await deleteDesignationService({designationId:req.params.designationId})
 
-        const deletedDesignation = await Designation.findByIdAndUpdate(
-            designationId,
-            {isDeleted:true,
-             isActive:false
-            },
-            {returnDocument:"after"}
-        )
-
+   
         return res.status(200).json(
             new ApiResponse(
                 200,
