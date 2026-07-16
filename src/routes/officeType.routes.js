@@ -1,5 +1,13 @@
 import express from "express";
 import {
+    createOfficeTypeSchema,
+    updateOfficeTypeSchema,
+    deleteOfficeTypeSchema
+} from "../schemas/officeType.schema.js"
+
+import validate from "../middlewares/validate.js"
+
+import {
     createOfficeType,
     getAllOfficeTypes,
     updateOfficeType,
@@ -7,10 +15,10 @@ import {
 
 const officeTypeRouter = express.Router()
 
-officeTypeRouter.post("/",createOfficeType)
+officeTypeRouter.post("/",validate(createOfficeTypeSchema),createOfficeType)
 officeTypeRouter.get("/",getAllOfficeTypes)
-officeTypeRouter.put("/:officeTypeId",updateOfficeType)
-officeTypeRouter.delete("/:officeTypeId",deleteOfficeType)
+officeTypeRouter.put("/:officeTypeId",validate(updateOfficeTypeSchema),updateOfficeType)
+officeTypeRouter.delete("/:officeTypeId",validate(deleteOfficeTypeSchema),deleteOfficeType)
 
 
 
