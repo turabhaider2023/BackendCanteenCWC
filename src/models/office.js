@@ -18,6 +18,7 @@ const officeSchema = new mongoose.Schema({
     },
     city:{
         type:String,
+        required:true
     },
     regionType:{
         type:String,
