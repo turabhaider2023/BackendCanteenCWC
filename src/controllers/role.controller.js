@@ -1,22 +1,14 @@
-import {createRoleValidation
-    ,updateRoleValidation
-    ,deleteRoleValidation
-} from "../validations/role.validation.js"
-import {Role} from "../models/role.js"
+import {createRoleService,
+    getAllRolesService,
+    updateRoleService,
+    deleteRoleService
+} from "../services/role.service.js"
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 
 
 export const createRole = asyncHandler(async(req,res)=>{
-        await createRoleValidation(req)
-
-        const {roleName} = req.body
-
-        const data = {
-            roleName:roleName.trim()
-        }
-
-        const newRole = await Role.create(data)
+       const newRole = await createRoleService(req.body)
 
         return res.status(201).json(
            new ApiResponse(
@@ -30,11 +22,7 @@ export const createRole = asyncHandler(async(req,res)=>{
 })
 
 export const getAllRoles = asyncHandler(async(req,res)=>{
-        const allRoles = await Role
-        .find({
-            isDeleted:false
-        })
-        .sort({roleName:1})
+        const allRoles = await getAllRolesService()
 
         return res.status(200).json(
             new ApiResponse(
@@ -49,28 +37,10 @@ export const getAllRoles = asyncHandler(async(req,res)=>{
 })
 
 export const updateRole = asyncHandler(async(req,res)=>{
-        await updateRoleValidation(req)
-        const {roleId}=req.params
-        const {roleName,isActive} = req.body
-
-        const updateData = {}
-
-        if(roleName!==undefined){
-            updateData.roleName=roleName.trim()
-
-        }
-
-        if(isActive!==undefined){
-            updateData.isActive=isActive
-        }
-
-        const updatedRole = await Role.findByIdAndUpdate(
-            roleId,
-            updateData,
-            {returnDocument:"after"}
-
-        )
-
+   const updatedRole = await updateRoleService({
+    roleId:req.params.roleId,
+    ...req.body
+   })
         return res.status(200).json(
           new ApiResponse(
             200,
@@ -82,18 +52,7 @@ export const updateRole = asyncHandler(async(req,res)=>{
     })
 
 export const deleteRole = asyncHandler(async(req,res)=>{
-        await deleteRoleValidation(req)
-        const {roleId} = req.params
-
-        const deletedRole = await Role.findByIdAndUpdate(
-            roleId,
-            {isDeleted:true,
-             isActive:false
-            },
-            {returnDocument:"after"}
-
-        )
-
+    const deletedRole = await deleteRoleService(req.params)
         return res.status(200).json(
             new ApiResponse(
                 200,
