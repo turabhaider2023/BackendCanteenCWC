@@ -1,11 +1,9 @@
 import { z } from "zod";
 import { objectIdSchema } from "./common.schema.js";
 
-const itemNameSchema = z
-    .string()
-    .trim()
-    .min(1, "Item name cannot be empty")
-    .max(100, "Item name cannot exceed 100 characters");
+const quantitySchema = z
+    .coerce.number()
+    .min(0, "Quantity cannot be negative");
 
 const itemCodeSchema = z
     .string()
@@ -26,11 +24,11 @@ const stockSchema = z
 
 export const createItemSchema = z.object({
     body: z.object({
-        itemName: itemNameSchema,
-        itemCode: itemCodeSchema,
-        itemCategoryId: objectIdSchema,
-        unitId: objectIdSchema,
+        itemMasterId: objectIdSchema,
         brandId: objectIdSchema,
+        quantity: quantitySchema,
+        unitId: objectIdSchema,
+        itemCode: itemCodeSchema,
         description: descriptionSchema.optional(),
         isPerishable: z.boolean().optional(),
         minimumStock: stockSchema,
@@ -58,12 +56,12 @@ export const updateItemSchema = z.object({
        
     }),
 
-    body: z.object({
-        itemName: itemNameSchema.optional(),
-        itemCode: itemCodeSchema.optional(),
-        itemCategoryId: objectIdSchema.optional(),
+     body: z.object({
+        itemMasterId:objectIdSchema.optional(),
+        brandId:objectIdSchema.optional(),
+        quantity:quantitySchema.optional(),
         unitId: objectIdSchema.optional(),
-        brandId: objectIdSchema.optional(),
+        itemCode: itemCodeSchema.optional(),
         description: descriptionSchema.optional(),
         isPerishable: z.boolean().optional(),
         minimumStock: stockSchema.optional(),

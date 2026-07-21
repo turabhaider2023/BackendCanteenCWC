@@ -1,16 +1,16 @@
 import { Item } from "../models/item.js";
-import { ItemCategory } from "../models/itemCategory.js";
+import { ItemMaster } from "../models/itemMaster.js";
 import { Unit } from "../models/unit.js";
 import { Brand } from "../models/brand.js"
 import ApiError from "../utils/ApiError.js";
 
 export const createItemService = async (data) => {
     const {
-        itemName,
-        itemCode,
-        itemCategoryId,
-        unitId,
+        itemMasterId,
         brandId,
+        quantity,
+        unitId,
+        itemCode,
         description,
         isPerishable,
         minimumStock,
@@ -18,40 +18,32 @@ export const createItemService = async (data) => {
     } = data;
 
     const existingItem = await Item.findOne({
-        $or: [
-            { itemName },
-            { itemCode }
-        ],
+        itemCode,
         isDeleted: false
     });
 
     if (existingItem) {
-        if (existingItem.itemName === itemName) {
-            throw new ApiError(
-                409,
-                "Item with this name already exists"
-            );
-        }
-
-        if (existingItem.itemCode === itemCode) {
+        
             throw new ApiError(
                 409,
                 "Item with this code already exists"
             );
         }
-    }
 
-    const itemCategory = await ItemCategory.findOne({
-        _id: itemCategoryId,
-        isDeleted: false
-    });
+      
+    const itemMaster = await ItemMaster.findOne({
+    _id: itemMasterId,
+    isDeleted: false
+});
 
-    if (!itemCategory) {
+    if (!itemMaster) {
         throw new ApiError(
             404,
-            "Item category not found"
+            "Item master not found"
         );
     }
+
+   
 
     const unit = await Unit.findOne({
         _id: unitId,
@@ -79,11 +71,11 @@ export const createItemService = async (data) => {
 
     try {
         const newItem = await Item.create({
-            itemName,
-            itemCode,
-            itemCategoryId,
-            unitId,
+            itemMasterId,
             brandId,
+            quantity,
+            unitId,
+            itemCode,
             description,
             isPerishable,
             minimumStock,
@@ -95,22 +87,22 @@ export const createItemService = async (data) => {
         if (error.code === 11000) {
             throw new ApiError(
                 409,
-                "Item already exists"
+                "Item with this code already exists"
             );
         }
 
         throw error;
     }
-};
+}
 
 export const getAllItemsService = async () => {
     const allItems = await Item.find({
         isDeleted: false
     })
-        .populate("itemCategoryId", "itemCategoryName")
+        .populate("itemMasterId", "itemName")
         .populate("unitId", "unitName unitCode")
         .populate("brandId","brandName")
-        .sort({ itemName: 1 });
+        .sort({ itemCode: 1 });
 
     return allItems;
 };
@@ -122,7 +114,7 @@ export const getItemByIdService = async (data) => {
         _id: itemId,
         isDeleted: false
     })
-        .populate("itemCategoryId", "itemCategoryName")
+        .populate("itemMasterId", "itemName")
         .populate("brandId", "brandName")
         .populate("unitId", "unitName unitCode");
 
@@ -137,13 +129,13 @@ export const getItemByIdService = async (data) => {
 };
 
 export const updateItemService = async (data) => {
-    const {
+      const {
         itemId,
-        itemName,
-        itemCode,
-        itemCategoryId,
-        unitId,
+        itemMasterId,
         brandId,
+        quantity,
+        unitId,
+        itemCode,
         description,
         isPerishable,
         minimumStock,
@@ -163,20 +155,8 @@ export const updateItemService = async (data) => {
         );
     }
 
-    if (itemName !== undefined) {
-        const duplicateItemName = await Item.findOne({
-            itemName,
-            isDeleted: false,
-            _id: { $ne: itemId }
-        });
+   
 
-        if (duplicateItemName) {
-            throw new ApiError(
-                409,
-                "Item with this name already exists"
-            );
-        }
-    }
 
     if (itemCode !== undefined) {
         const duplicateItemCode = await Item.findOne({
@@ -193,16 +173,16 @@ export const updateItemService = async (data) => {
         }
     }
 
-    if (itemCategoryId !== undefined) {
-        const itemCategory = await ItemCategory.findOne({
-            _id: itemCategoryId,
+    if (itemMasterId !== undefined) {
+        const itemMaster = await ItemMaster.findOne({
+            _id: itemMasterId,
             isDeleted: false
         });
 
-        if (!itemCategory) {
+        if (!itemMaster) {
             throw new ApiError(
                 404,
-                "Item category not found"
+                "Item master not found"
             );
         }
     }
@@ -235,20 +215,22 @@ export const updateItemService = async (data) => {
     }
 }
 
+
+
     
 
     const updatedData = {};
-
-    if (itemName !== undefined) updatedData.itemName = itemName;
-    if (itemCode !== undefined) updatedData.itemCode = itemCode;
-    if (itemCategoryId !== undefined) updatedData.itemCategoryId = itemCategoryId;
+    if(itemMasterId !== undefined) updatedData.itemMasterId = itemMasterId;
+    if(brandId !== undefined) updatedData.brandId = brandId;
+    if(quantity !== undefined) updatedData.quantity = quantity;
     if (unitId !== undefined) updatedData.unitId = unitId;
+    if (itemCode !== undefined) updatedData.itemCode = itemCode;
     if (description !== undefined) updatedData.description = description;
     if (isPerishable !== undefined) updatedData.isPerishable = isPerishable;
     if (minimumStock !== undefined) updatedData.minimumStock = minimumStock;
     if (maximumStock !== undefined) updatedData.maximumStock = maximumStock;
     if (isActive !== undefined) updatedData.isActive = isActive;
-    if(brandId!==undefined) updatedData.brandId = brandId;
+    
     try {
         const updatedItem = await Item.findByIdAndUpdate(
             itemId,
@@ -264,7 +246,7 @@ export const updateItemService = async (data) => {
         if (error.code === 11000) {
             throw new ApiError(
                 409,
-                "Item already exists"
+                "Item with this code already exists"
             );
         }
 

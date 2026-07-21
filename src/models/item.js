@@ -2,13 +2,30 @@ import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema(
     {
-        itemName: {
-            type: String,
-            required: true,
-            trim: true,
-            unique: true,
-            maxlength: 100
+        itemMasterId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "ItemMaster",
+            required: true
         },
+
+        brandId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Brand",
+            required: true
+        },
+
+        quantity: {
+            type: Number,
+            required: true,
+            min: 0
+        },
+
+        unitId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Unit",
+            required: true
+        },
+
 
         itemCode: {
             type: String,
@@ -19,23 +36,11 @@ const itemSchema = new mongoose.Schema(
             maxlength: 20
         },
 
-        itemCategoryId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "ItemCategory",
-            required: true
-        },
+      
+      
 
-        unitId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Unit",
-            required: true
-        },
-        brandId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Brand",
-            required: true
-        },
-
+      
+        
         description: {
             type: String,
             trim: true,
