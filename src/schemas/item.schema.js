@@ -30,6 +30,7 @@ export const createItemSchema = z.object({
         itemCode: itemCodeSchema,
         itemCategoryId: objectIdSchema,
         unitId: objectIdSchema,
+        brandId: objectIdSchema,
         description: descriptionSchema.optional(),
         isPerishable: z.boolean().optional(),
         minimumStock: stockSchema,
@@ -53,7 +54,8 @@ export const getItemByIdSchema = z.object({
 
 export const updateItemSchema = z.object({
     params: z.object({
-        itemId: objectIdSchema
+        itemId: objectIdSchema,
+       
     }),
 
     body: z.object({
@@ -61,6 +63,7 @@ export const updateItemSchema = z.object({
         itemCode: itemCodeSchema.optional(),
         itemCategoryId: objectIdSchema.optional(),
         unitId: objectIdSchema.optional(),
+        brandId: objectIdSchema.optional(),
         description: descriptionSchema.optional(),
         isPerishable: z.boolean().optional(),
         minimumStock: stockSchema.optional(),

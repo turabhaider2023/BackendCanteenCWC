@@ -1,6 +1,7 @@
 import { Item } from "../models/item.js";
 import { ItemCategory } from "../models/itemCategory.js";
 import { Unit } from "../models/unit.js";
+import { Brand } from "../models/brand.js"
 import ApiError from "../utils/ApiError.js";
 
 export const createItemService = async (data) => {
@@ -9,6 +10,7 @@ export const createItemService = async (data) => {
         itemCode,
         itemCategoryId,
         unitId,
+        brandId,
         description,
         isPerishable,
         minimumStock,
@@ -63,12 +65,25 @@ export const createItemService = async (data) => {
         );
     }
 
+    const brand = await Brand.findOne({
+    _id: brandId,
+    isDeleted: false
+    });
+
+    if (!brand) {
+        throw new ApiError(
+            404,
+            "Brand not found"
+        );
+    }
+
     try {
         const newItem = await Item.create({
             itemName,
             itemCode,
             itemCategoryId,
             unitId,
+            brandId,
             description,
             isPerishable,
             minimumStock,
@@ -94,6 +109,7 @@ export const getAllItemsService = async () => {
     })
         .populate("itemCategoryId", "itemCategoryName")
         .populate("unitId", "unitName unitCode")
+        .populate("brandId","brandName")
         .sort({ itemName: 1 });
 
     return allItems;
@@ -107,6 +123,7 @@ export const getItemByIdService = async (data) => {
         isDeleted: false
     })
         .populate("itemCategoryId", "itemCategoryName")
+        .populate("brandId", "brandName")
         .populate("unitId", "unitName unitCode");
 
     if (!item) {
@@ -126,6 +143,7 @@ export const updateItemService = async (data) => {
         itemCode,
         itemCategoryId,
         unitId,
+        brandId,
         description,
         isPerishable,
         minimumStock,
@@ -203,6 +221,22 @@ export const updateItemService = async (data) => {
         }
     }
 
+    if (brandId !== undefined) {
+    const brand = await Brand.findOne({
+        _id: brandId,
+        isDeleted: false
+    });
+
+    if (!brand) {
+        throw new ApiError(
+            404,
+            "Brand not found"
+        );
+    }
+}
+
+    
+
     const updatedData = {};
 
     if (itemName !== undefined) updatedData.itemName = itemName;
@@ -214,7 +248,7 @@ export const updateItemService = async (data) => {
     if (minimumStock !== undefined) updatedData.minimumStock = minimumStock;
     if (maximumStock !== undefined) updatedData.maximumStock = maximumStock;
     if (isActive !== undefined) updatedData.isActive = isActive;
-
+    if(brandId!==undefined) updatedData.brandId = brandId;
     try {
         const updatedItem = await Item.findByIdAndUpdate(
             itemId,

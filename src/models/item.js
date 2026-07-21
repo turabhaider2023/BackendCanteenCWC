@@ -30,6 +30,11 @@ const itemSchema = new mongoose.Schema(
             ref: "Unit",
             required: true
         },
+        brandId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Brand",
+            required: true
+        },
 
         description: {
             type: String,
