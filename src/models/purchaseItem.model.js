@@ -27,6 +27,18 @@ const purchaseItemSchema = new mongoose.Schema(
       trim: true
     },
 
+    receivedQuantity: {
+      type: Number,
+      required: true,
+      min: 1
+    },
+
+    freeQuantity: {
+      type: Number,
+      default: 0,
+      min: 0
+    },
+
     purchasePrice: {
       type: Number,
       required: true,
@@ -39,17 +51,17 @@ const purchaseItemSchema = new mongoose.Schema(
       min: 0
     },
 
-    receivedQuantity: {
-      type: Number,
-      required: true,
-      min: 1
-    },
+    manufacturingDate: {
+    type: Date
+},
 
-    freeQuantity: {
-      type: Number,
-      default: 0,
-      min: 0
-    },
+    expiryDate: {
+    type: Date
+},
+
+  
+
+    
 
     lineTotal: {
       type: Number,

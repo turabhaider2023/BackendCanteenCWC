@@ -58,7 +58,9 @@ export const createPurchase = async (purchaseData,userId) => {
         _id:{$in:itemIds},
         isDeleted:false
 
-    }).session(session)
+    })
+    .populate("itemMasterId","itemName")
+    .session(session)
 
     if(existingItems.length !== itemIds.length){
         throw new ApiError(
@@ -77,11 +79,29 @@ export const createPurchase = async (purchaseData,userId) => {
 
     
     const processedPurchaseItems = []
-    for (const purchaseItem of purchaseItems){
+   for (const purchaseItem of purchaseItems){
+    const item = existingItems.find(
+        existingItem => 
+            existingItem._id.toString()===purchaseItem.itemId.toString()
+    )
 
-    processedPurchaseItems.push(calculatePurchaseItemTotals(purchaseItem))
+    const processedPurchaseItem = {
+        itemId :item._id,
+        itemCode :item.itemCode,
+        itemName :item.itemMasterId.itemName,
+        receivedQuantity : purchaseItem.receivedQuantity,
+        freeQuantity : purchaseItem.freeQuantity,
+        purchasePrice : purchaseItem.purchasePrice,
+        mrp : purchaseItem.mrp,
+        manufacturingDate: purchaseItem.manufacturingDate,
+        expiryDate: purchaseItem.expiryDate,
+        remarks: purchaseItem.remarks
 
     }
+
+    processedPurchaseItems
+    .push(calculatePurchaseItemTotals(processedPurchaseItem))
+}
 
     
     const {subtotal,taxAmount,grandTotal}=calculatePurchaseTotals(processedPurchaseItems)
@@ -212,13 +232,269 @@ export const receivePurchase = async (purchaseId, performedBy) => {
 }
 
 
-export const getAllPurchases = async () => {};
+export const getAllPurchases = async () => {
+    const purchases = await Purchase.find()
+        .sort({ createdAt: -1 });
 
-export const getPurchaseById = async () => {};
+    return purchases;
+};
 
-export const updatePurchase = async () => {};
+export const getPurchaseById = async (data) => {
+    const purchaseId = data
 
-export const cancelPurchase = async () => {};
+    const purchase = await Purchase.findOne({
+        _id:purchaseId
+    })
+
+    if(!purchase){
+        throw new ApiError(
+            404,
+            "Purchase not found"
+        )
+    }
+
+    return purchase
+};
+
+export const updatePurchase = async (purchaseId, updateData) => {
+
+    const {
+        vendorId,
+        invoiceNo,
+        invoiceDate,
+        remarks,
+        purchaseItems
+    } = updateData;
+
+    const session = await mongoose.startSession();
+
+    try {
+        session.startTransaction();
+
+        // Find purchase
+        const purchase = await Purchase.findById(
+            purchaseId
+        ).session(session);
+
+        if (!purchase) {
+            throw new ApiError(
+                404,
+                "Purchase not found"
+            );
+        }
+
+        // Only draft purchase can be updated
+        if (purchase.status !== PURCHASE_STATUS.DRAFT) {
+            throw new ApiError(
+                409,
+                "Only draft purchase can be updated"
+            );
+        }
+
+        // Validate vendor
+        const vendor = await Vendor.findOne({
+            _id: vendorId,
+            isDeleted: false
+        }).session(session);
+
+        if (!vendor) {
+            throw new ApiError(
+                404,
+                "Vendor not found"
+            );
+        }
+
+        // Validate purchase items
+        if (
+            !Array.isArray(purchaseItems) ||
+            purchaseItems.length === 0
+        ) {
+            throw new ApiError(
+                400,
+                "Purchase must contain at least one item"
+            );
+        }
+
+        // Check duplicate items inside purchase
+        const itemIds = [];
+        const uniqueItemIds = new Set();
+
+        for (const purchaseItem of purchaseItems) {
+
+            if (uniqueItemIds.has(
+                purchaseItem.itemId.toString()
+            )) {
+                throw new ApiError(
+                    409,
+                    "Duplicate item is not allowed in purchase"
+                );
+            }
+
+            uniqueItemIds.add(
+                purchaseItem.itemId.toString()
+            );
+
+            itemIds.push(purchaseItem.itemId);
+        }
+
+        // Validate items
+        const existingItems = await Item.find({
+            _id: {
+                $in: itemIds
+            },
+            isDeleted: false
+        }).session(session);
+
+        if (existingItems.length !== itemIds.length) {
+            throw new ApiError(
+                404,
+                "One or more items do not exist"
+            );
+        }
+
+        // Check duplicate invoice
+        const existingPurchase = await Purchase.findOne({
+            vendorId,
+            invoiceNo,
+            _id: {
+                $ne: purchaseId
+            }
+        }).session(session);
+
+        if (existingPurchase) {
+            throw new ApiError(
+                409,
+                "Purchase invoice already exists"
+            );
+        }
+
+        // Calculate purchase item totals
+        const processedPurchaseItems = [];
+
+        for (const purchaseItem of purchaseItems) {
+
+            processedPurchaseItems.push(
+                calculatePurchaseItemTotals(
+                    purchaseItem
+                )
+            );
+        }
+
+        // Calculate purchase totals
+        const {
+            subtotal,
+            taxAmount,
+            grandTotal
+        } = calculatePurchaseTotals(
+            processedPurchaseItems
+        );
+
+        // Update purchase
+        purchase.vendorId = vendorId;
+        purchase.invoiceNo = invoiceNo;
+        purchase.invoiceDate = invoiceDate;
+        purchase.subtotal = subtotal;
+        purchase.taxAmount = taxAmount;
+        purchase.grandTotal = grandTotal;
+        purchase.remarks = remarks;
+
+        await purchase.save({
+            session
+        });
+
+        // Remove existing purchase items
+        await PurchaseItem.deleteMany({
+            purchaseId: purchase._id
+        }).session(session);
+
+        // Create updated purchase items
+        const purchaseItemDocuments = [];
+
+        for (const purchaseItem of processedPurchaseItems) {
+
+            purchaseItemDocuments.push({
+                ...purchaseItem,
+                purchaseId: purchase._id
+            });
+        }
+
+        await PurchaseItem.insertMany(
+            purchaseItemDocuments,
+            {
+                session
+            }
+        );
+
+        await session.commitTransaction();
+
+        return purchase;
+
+    } catch (error) {
+
+        await session.abortTransaction();
+
+        throw error;
+
+    } finally {
+
+        await session.endSession();
+    }
+};
+
+
+
+
+export const cancelPurchase = async (purchaseId) => {
+
+    const session = await mongoose.startSession();
+
+    try {
+        session.startTransaction();
+
+        // Find purchase
+        const purchase = await Purchase.findById(
+            purchaseId
+        ).session(session);
+
+        if (!purchase) {
+            throw new ApiError(
+                404,
+                "Purchase not found"
+            );
+        }
+
+        // Only draft purchase can be cancelled
+        if (purchase.status !== PURCHASE_STATUS.DRAFT) {
+            throw new ApiError(
+                409,
+                "Only draft purchase can be cancelled"
+            );
+        }
+
+        // Update purchase status
+        purchase.status = PURCHASE_STATUS.CANCELLED;
+
+        await purchase.save({
+            session
+        });
+
+        await session.commitTransaction();
+
+        return purchase;
+
+    } catch (error) {
+
+        await session.abortTransaction();
+
+        throw error;
+
+    } finally {
+
+        await session.endSession();
+    }
+};
+
+
 
 
 // =============================
@@ -257,8 +533,3 @@ const calculatePurchaseTotals = (purchaseItems) => {
     };
 };
 
-const validatePurchaseForUpdate = () => {};
-
-const validatePurchaseForReceive = () => {};
-
-const validatePurchaseForCancel = () => {};

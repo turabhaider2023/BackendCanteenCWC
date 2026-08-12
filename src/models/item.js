@@ -1,18 +1,20 @@
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema(
-    {
+    {   
+        brandId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Brand",
+            required: true
+        },
+        
         itemMasterId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "ItemMaster",
             required: true
         },
 
-        brandId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Brand",
-            required: true
-        },
+      
 
         quantity: {
             type: Number,
