@@ -11,7 +11,7 @@ const inventoryBatchSchema = new mongoose.Schema(
     purchaseItemId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "PurchaseItem",
-      required: true
+      
     },
 
     batchNumber: {

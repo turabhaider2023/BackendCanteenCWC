@@ -14,6 +14,9 @@ const connectToServer = async()=>{
             await connectDB()
             app.listen(PORT,()=>{
                 console.log(`the server is listening at port ${PORT}`)
+                console.log(
+                        `health check: http://localhost:${PORT}/api/v1/health`
+                );
             })
         } catch (error) {
             console.error("error in the sever connection: ",error)
