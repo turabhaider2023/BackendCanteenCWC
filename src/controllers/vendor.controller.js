@@ -19,7 +19,7 @@ export const createVendor = asyncHandler(async (req,res)=>{
 })
 
 export const getAllVendors = asyncHandler(async (req,res)=>{
-    const allVendors = await getAllVendorsService()
+    const allVendors = await getAllVendorsService(req.query)
 
     return res.status(200).json(
         new ApiResponse(200,

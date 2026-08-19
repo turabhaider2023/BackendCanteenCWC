@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdSchema } from "../schemas/common.schema.js"
+import { objectIdSchema,listQuerySchema} from "../schemas/common.schema.js"
 
 const officeTypeNameSchema = z
     .string()
@@ -20,6 +20,10 @@ export const createOfficeTypeSchema = z.object({
 
     })
 })
+
+export const getAllOfficeTypesSchema = z.object({
+    query: listQuerySchema
+});
 
 export const updateOfficeTypeSchema = z.object({
     body:z.object({ 

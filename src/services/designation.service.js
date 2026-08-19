@@ -1,5 +1,6 @@
 import { Designation } from "../models/designation.js"
 import ApiError from "../utils/ApiError.js"
+import { runList } from "../utils/listQuery.js";
 
 export const createDesignationService = async (data)=>{
          const {designationName,level}=data
@@ -39,13 +40,13 @@ export const createDesignationService = async (data)=>{
   
       
 
-export const getAllDesignationsService = async ()=>{
-        const allDesignations = await Designation
-        .find({isDeleted:false})
-        .sort({designationName:1})
-
-        return allDesignations;
-}
+export const getAllDesignationsService = async (query) => {
+    return await runList(Designation, {
+        query,
+        searchFields: ["designationName"],
+        sort: { designationName: 1 }
+    });
+};
 
 export const updateDesignationService = async (data)=>{
 

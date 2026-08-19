@@ -1,5 +1,6 @@
 import { ItemCategory } from "../models/itemCategory.js";
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js"
 
 export const createItemCategoryService = async (data) => {
     const { itemCategoryName, description } = data;
@@ -35,12 +36,15 @@ export const createItemCategoryService = async (data) => {
     }
 };
 
-export const getAllItemCategoriesService = async () => {
-    const allItemCategories = await ItemCategory.find({
-        isDeleted: false
-    }).sort({ itemCategoryName: 1 });
-
-    return allItemCategories;
+export const getAllItemCategoriesService = async (query) => {
+    return await runList(
+        ItemCategory,
+        {
+            query,
+            searchFields:["itemCategoryName"],
+            sort:{itemCategoryName:1}
+        }
+    )
 };
 
 export const getItemCategoryByIdService = async (data) => {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdSchema } from "./common.schema.js";
+import { objectIdSchema ,listQuerySchema } from "./common.schema.js";
 
 const itemNameSchema = z
     .string()
@@ -21,8 +21,9 @@ export const createItemMasterSchema = z.object({
     })
 });
 
-export const getAllItemMastersSchema = z.object({});
-
+export const getAllItemMastersSchema = z.object({
+    query: listQuerySchema
+});
 export const getItemMasterByIdSchema = z.object({
     params: z.object({
         itemMasterId: objectIdSchema

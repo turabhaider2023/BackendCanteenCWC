@@ -1,6 +1,7 @@
 import { ItemMaster } from "../models/itemMaster.js";
 import { ItemCategory } from "../models/itemCategory.js";
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js";
 
 export const createItemMasterService = async (data) => {
     const {
@@ -53,14 +54,21 @@ export const createItemMasterService = async (data) => {
     }
 };
 
-export const getAllItemMastersService = async () => {
-    const allItemMasters = await ItemMaster.find({
-        isDeleted: false
-    })
-        .populate("itemCategoryId", "itemCategoryName")
-        .sort({ itemName: 1 });
+export const getAllItemMastersService = async (query) => {
+   return await runList(ItemMaster,
+    {
+        query,
+        searchFields:["itemName"],
+        sort:{itemName:1},
+        populate:[
+            {
+                path:"itemCategoryId",
+                select:"itemCategoryName"
+            }
+        ]
 
-    return allItemMasters;
+    }
+   )
 };
 
 export const getItemMasterByIdService = async (data) => {

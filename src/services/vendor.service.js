@@ -1,5 +1,6 @@
 import { Vendor } from "../models/vendor.js"
 import ApiError from "../utils/ApiError.js"
+import { runList } from "../utils/listQuery.js";
 
 export const createVendorService = async(data)=>{
     const {vendorName,gstNumber,contactPerson,vendorMobile,
@@ -42,14 +43,13 @@ export const createVendorService = async(data)=>{
 
 }
 
-export const getAllVendorsService = async ()=>{
- const allVendors = await Vendor.find({
-    isDeleted:false
- })
- .sort({vendorName:1})
-
- return allVendors;
-}
+export const getAllVendorsService = async (query) => {
+    return runList(Vendor, {
+        query,
+        searchFields: ["vendorName"],
+        sort: { vendorName: 1 }
+    });
+};
 
 export const getVendorByIdService = async (data)=>{
 const { vendorId }= data

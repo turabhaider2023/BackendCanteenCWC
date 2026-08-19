@@ -1,5 +1,6 @@
 import { Role } from "../models/role.js";
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js";
 
 export const createRoleService = async (data)=>{
     const {roleName} = data
@@ -35,17 +36,13 @@ export const createRoleService = async (data)=>{
     }
 }
 
-export const getAllRolesService = async ()=>{
-    const allRoles = await Role
-    .find({
-        isDeleted:false
-    })
-    .sort({roleName:1})
-
-    
-
-    return allRoles;
-}
+export const getAllRolesService = async (query) => {
+    return runList(Role, {
+        query,
+        searchFields: ["roleName"],
+        sort: { roleName: 1 }
+    });
+};
 
 export const updateRoleService = async (data)=>{
 

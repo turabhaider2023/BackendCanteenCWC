@@ -1,5 +1,6 @@
 import { Unit } from "../models/unit.js";
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js";
 
 export const createUnitService = async (data) => {
     const { unitName, unitCode, description } = data;
@@ -48,14 +49,12 @@ export const createUnitService = async (data) => {
     }
 };
 
-export const getAllUnitsService = async () => {
-    const allUnits = await Unit.find({
-        isDeleted: false
-    }).sort({
-        unitName: 1
+export const getAllUnitsService = async (query) => {
+    return await runList(Unit, {
+        query,
+        searchFields: ["unitName","unitCode"],
+        sort: { unitName: 1 }
     });
-
-    return allUnits;
 };
 
 export const getUnitByIdService = async (data) => {

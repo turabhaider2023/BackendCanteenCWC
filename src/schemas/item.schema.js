@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdSchema } from "./common.schema.js";
+import { objectIdSchema,listQuerySchema } from "./common.schema.js";
 
 const quantitySchema = z
     .coerce.number()
@@ -42,7 +42,9 @@ export const createItemSchema = z.object({
     )
 });
 
-export const getAllItemsSchema = z.object({});
+export const getAllItemsSchema = z.object({
+     query: listQuerySchema
+});
 
 export const getItemByIdSchema = z.object({
     params: z.object({

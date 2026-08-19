@@ -24,7 +24,7 @@ export const createOfficeType = asyncHandler(async(req,res)=>{
 
 export const getAllOfficeTypes = asyncHandler(async(req,res)=>{
         
-        const allOfficeTypes = await getAllOfficeTypesService()
+        const allOfficeTypes = await getAllOfficeTypesService(req.query)
 
         return res.status(200).json(
             new ApiResponse(

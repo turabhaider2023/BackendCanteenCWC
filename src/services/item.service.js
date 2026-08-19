@@ -3,6 +3,7 @@ import { ItemMaster } from "../models/itemMaster.js";
 import { Unit } from "../models/unit.js";
 import { Brand } from "../models/brand.js"
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js"
 
 export const createItemService = async (data) => {
     const {
@@ -95,16 +96,26 @@ export const createItemService = async (data) => {
     }
 }
 
-export const getAllItemsService = async () => {
-    const allItems = await Item.find({
-        isDeleted: false
-    })
-        .populate("itemMasterId", "itemName")
-        .populate("unitId", "unitName unitCode")
-        .populate("brandId","brandName")
-        .sort({ itemCode: 1 });
-
-    return allItems;
+export const getAllItemsService = async (query) => {
+    return await runList(Item, {
+        query,
+        searchFields: ["itemCode"],
+        sort: { itemCode: 1 },
+        populate: [
+            {
+                path: "itemMasterId",
+                select: "itemName"
+            },
+            {
+                path: "unitId",
+                select: "unitName unitCode"
+            },
+            {
+                path: "brandId",
+                select: "brandName"
+            }
+        ]
+    });
 };
 
 export const getItemByIdService = async (data) => {

@@ -22,7 +22,7 @@ export const createItem = asyncHandler(async (req, res) => {
 });
 
 export const getAllItems = asyncHandler(async (req, res) => {
-    const allItems = await getAllItemsService();
+    const allItems = await getAllItemsService(req.query);
 
     return res.status(200).json(
         new ApiResponse(

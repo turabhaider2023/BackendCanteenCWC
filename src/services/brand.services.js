@@ -1,5 +1,6 @@
 import ApiError from "../utils/ApiError.js";
 import { Brand } from "../models/brand.js"
+import { runList } from "../utils/listQuery.js";
 
 export const createBrandService = async (data)=>{
     const {brandName,description} = data
@@ -35,14 +36,13 @@ export const createBrandService = async (data)=>{
     }
 }
 
-export const getAllBrandsService = async ()=>{
-    const allBrands = await Brand.find({
-        isDeleted:false
-    })
-    .sort({brandName:1})
-
-    return allBrands;
-}
+export const getAllBrandsService = async (query) => {
+    return await runList(Brand, {
+        query,
+        searchFields: ["brandName"],
+        sort: { brandName: 1 }
+    });
+};
 
 export const getBrandByIdService = async (data)=>{
     const {brandId} = data

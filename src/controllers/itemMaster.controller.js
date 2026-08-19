@@ -22,7 +22,7 @@ export const createItemMaster = asyncHandler(async (req, res) => {
 });
 
 export const getAllItemMasters = asyncHandler(async (req, res) => {
-    const allItemMasters = await getAllItemMastersService();
+    const allItemMasters = await getAllItemMastersService(req.query);
 
     return res.status(200).json(
         new ApiResponse(

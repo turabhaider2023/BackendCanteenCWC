@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdSchema } from "../schemas/common.schema.js"
+import { objectIdSchema,listQuerySchema } from "../schemas/common.schema.js"
 
 const designationNameSchema = z
     .string()
@@ -22,6 +22,10 @@ export const createDesignationSchema = z.object({
     })
 
     })
+
+export const getAllDesignationsSchema = z.object({
+    query: listQuerySchema
+});
 
 export const updateDesignationSchema = z.object({
     body:z.object({

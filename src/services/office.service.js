@@ -1,6 +1,7 @@
 import { Office } from "../models/office.js";
 import { OfficeType } from "../models/officeType.js";
 import ApiError from "../utils/ApiError.js";
+import { runList } from "../utils/listQuery.js";
 
 export const createOfficeService = async (data)=>{
 
@@ -76,14 +77,13 @@ export const createOfficeService = async (data)=>{
    }
 }
    
-
-export const getAllOfficesService = async ()=>{
-    const getAllOffices = await Office
-    .find({isDeleted:false})
-    .sort({officeName:1})
-
-    return getAllOffices;
-}
+export const getAllOfficesService = async (query) => {
+    return runList(Office, {
+        query,
+        searchFields: ["officeName"],
+        sort: { officeName: 1 }
+    });
+};
 
 export const updateOfficeService = async (data)=>{
     const {officeId,officeName,parentOfficeId,officeTypeId,city,regionType,isActive}=data

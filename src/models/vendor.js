@@ -9,7 +9,6 @@ const vendorSchema = new mongoose.Schema({
 
     gstNumber:{
         type:String,
-        required:true,
         unique:true,
         trim:true,
         uppercase:true
@@ -44,13 +43,15 @@ const vendorSchema = new mongoose.Schema({
     state:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        default:"Delhi"
     },
 
     city:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        default:"New Delhi"
     },
 
     pinCode:{

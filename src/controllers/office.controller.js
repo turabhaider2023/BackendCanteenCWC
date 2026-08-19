@@ -24,7 +24,7 @@ export const createOffice = asyncHandler(async(req,res)=>{
 })
 
 export const getAllOffices = asyncHandler(async(req,res)=>{
-        const allOffices=await getAllOfficesService()
+        const allOffices=await getAllOfficesService(req.query)
 
         return res.status(200).json(
             new ApiResponse(

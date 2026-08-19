@@ -22,7 +22,7 @@ export const createUnit = asyncHandler(async (req, res) => {
 });
 
 export const getAllUnits = asyncHandler(async (req, res) => {
-    const allUnits = await getAllUnitsService();
+    const allUnits = await getAllUnitsService(req.query);
 
     return res.status(200).json(
         new ApiResponse(

@@ -22,7 +22,7 @@ export const createRole = asyncHandler(async(req,res)=>{
 })
 
 export const getAllRoles = asyncHandler(async(req,res)=>{
-        const allRoles = await getAllRolesService()
+        const allRoles = await getAllRolesService(req.query)
 
         return res.status(200).json(
             new ApiResponse(

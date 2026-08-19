@@ -22,7 +22,7 @@ export const createBrand = asyncHandler(async(req,res)=>{
 })
 
 export const getAllBrands = asyncHandler(async(req,res)=>{
-    const allBrands = await getAllBrandsService()
+    const allBrands = await getAllBrandsService(req.query)
 
     return res.status(200).json(
         new ApiResponse(200,

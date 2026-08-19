@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { objectIdSchema } from "./common.schema.js"
+import { objectIdSchema,listQuerySchema } from "./common.schema.js"
 
 const vendorNameSchema = z
     .string()
@@ -76,8 +76,8 @@ const pinCodeSchema = z
     })
 
     export const getAllVendorsSchema = z.object({
-
-    })
+    query: listQuerySchema
+});
 
     export const getVendorByIdSchema = z.object({
         params:z.object({

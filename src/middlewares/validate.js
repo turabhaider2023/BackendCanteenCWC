@@ -12,7 +12,17 @@ const validate = (schema) => {
 
             req.body = validatedData.body;
             req.params = validatedData.params;
-            req.query = validatedData.query;
+           
+            Object.defineProperty(req,"query",
+                {
+                    value:validatedData.query,
+                    writable:true,
+                    configurable:true,
+                    enumerable:true
+
+                }
+
+            )
 
             return next();
         } catch (error) {

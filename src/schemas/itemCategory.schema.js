@@ -20,7 +20,15 @@ export const createItemCategorySchema = z.object({
     })
 });
 
-export const getAllItemCategoriesSchema = z.object({});
+export const getAllItemCategoriesSchema = z.object({
+    query: z.object({
+        page: z.string().optional(),
+        limit: z.string().optional(),
+        q: z.string().optional(),
+        isActive: z.string().optional(),
+        includeDeleted: z.string().optional()
+    })
+});
 
 export const getItemCategoryByIdSchema = z.object({
     params: z.object({

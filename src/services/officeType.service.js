@@ -1,5 +1,6 @@
 import { OfficeType } from "../models/officeType.js"
 import ApiError from "../utils/ApiError.js"
+import { runList } from "../utils/listQuery.js";
 
 export const createOfficeTypeService = async(data)=>{
         const {officeTypeName,level} = data
@@ -37,14 +38,13 @@ export const createOfficeTypeService = async(data)=>{
             
         }
 
-
-export const getAllOfficeTypesService = async()=>{
-    const allOfficeTypes = await OfficeType
-            .find({isDeleted:false})
-            .sort({officeTypeName:1})
-
-            return allOfficeTypes
-}
+export const getAllOfficeTypesService = async (query) => {
+    return await runList(OfficeType, {
+        query,
+        searchFields: ["officeTypeName"],
+        sort: { officeTypeName: 1 }
+    });
+};
 
 export const updateOfficeTypeService = async (data)=>{
 

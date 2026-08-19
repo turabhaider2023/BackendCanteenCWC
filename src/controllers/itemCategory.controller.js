@@ -22,7 +22,7 @@ export const createItemCategory = asyncHandler(async (req, res) => {
 });
 
 export const getAllItemCategories = asyncHandler(async (req, res) => {
-    const allItemCategories = await getAllItemCategoriesService();
+    const allItemCategories = await getAllItemCategoriesService(req.query);
 
     return res.status(200).json(
         new ApiResponse(

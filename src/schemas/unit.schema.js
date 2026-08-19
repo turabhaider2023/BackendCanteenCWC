@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { objectIdSchema } from "./common.schema.js";
+import { objectIdSchema,listQuerySchema} from "./common.schema.js";
 
 const unitNameSchema = z
     .string()
@@ -28,7 +28,9 @@ export const createUnitSchema = z.object({
     })
 });
 
-export const getAllUnitsSchema = z.object({});
+export const getAllUnitsSchema = z.object({
+    query: listQuerySchema
+});
 
 export const getUnitByIdSchema = z.object({
     params: z.object({

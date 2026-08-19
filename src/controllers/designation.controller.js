@@ -25,7 +25,7 @@ export const createDesignation = asyncHandler(async (req,res)=>{
 })
 
 export const getAllDesignations = asyncHandler(async(req,res)=>{
-        const allDesignations = await getAllDesignationsService()
+        const allDesignations = await getAllDesignationsService(req.query)
 
     return res.status(200).json(
                 new ApiResponse(
