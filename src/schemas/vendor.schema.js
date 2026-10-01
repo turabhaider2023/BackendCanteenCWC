@@ -21,6 +21,7 @@ const contactPersonSchema = z
     .trim()
     .min(1,"Contact person cannot be empty")
     .max(100,"Contact person name cannot exceed 100 characters")
+    .or(z.literal(""))
 
 const MOBILE_NUMBER_REGEX = /^[6-9][0-9]{9}$/
 
@@ -33,6 +34,7 @@ const vendorEmailSchema = z
     .string()
     .trim()
     .email("Invalid vendor email address")
+    .or(z.literal(""))
 
 const addressSchema = z
     .string()

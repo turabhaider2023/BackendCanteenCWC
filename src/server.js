@@ -1,13 +1,10 @@
-import dotenv from "dotenv"
-
-dotenv.config()
-
+import "./config/env.js";
 import app from "./app.js"
 import {connectDB} from "./config/database.js"
 
 
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||3000;
 
 const connectToServer = async()=>{
         try {
@@ -19,7 +16,7 @@ const connectToServer = async()=>{
                 );
             })
         } catch (error) {
-            console.error("error in the sever connection: ",error)
+            console.error("error in the server connection: ",error)
             process.exit(1)
             
         }

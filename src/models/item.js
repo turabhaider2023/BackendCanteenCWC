@@ -38,6 +38,65 @@ const itemSchema = new mongoose.Schema(
             maxlength: 20
         },
 
+        creditPrice: {
+    type: Number,
+    required: true,
+    min: 0,
+    default: 0,
+    set: (v) => Math.round(Number(v) || 0)
+},
+
+mrp: {
+    type: Number,
+    min: 0,
+    default: 0,
+    set: (v) => Math.round(Number(v) || 0)
+},
+
+priceUpdatedAt: {
+    type: Date
+},
+
+priceHistory: {
+    type: [
+        {
+            creditPrice: {
+                type: Number,
+                required: true,
+                min: 0
+            },
+
+            mrp: {
+                type: Number,
+                min: 0
+            },
+
+            source: {
+                type: String,
+                enum: ["manual", "purchase", "batch"],
+                required: true
+            },
+
+            note: {
+                type: String,
+                trim: true,
+                maxlength: 120
+            },
+
+            changedBy: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "CwcUser"
+            },
+
+            changedAt: {
+                type: Date,
+                required: true
+            }
+        }
+    ],
+    select: false
+},
+
       
       
 
